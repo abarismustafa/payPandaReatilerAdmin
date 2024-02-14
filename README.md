@@ -1,1 +1,1 @@
-# payPandaReatilerAdim
+# payPandaReatilerAdmin

@@ -29646,3 +29646,62 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   color: #fff !important;
   font-weight: 700 !important;
 }
+
+.login-area-regis {
+  text-align: center;
+}
+
+.login-area-regis>h4 {
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 55px;
+  letter-spacing: 0em;
+  text-align: center;
+
+}
+
+.login-area-regis>div {
+  display: flex;
+  justify-content: center;
+}
+
+.login-area-regis>div>p {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 416px;
+  color: grey;
+}
+.firstFor{
+  width: 650px;
+  margin: 30px auto;
+}
+.pancars{
+  color: #2E3191;
+ 
+}
+.pancars > label{
+  margin: 0;
+}
+.pancars > div{
+ color: #9F9F9F;
+}
+.clrelative{
+  position: relative;
+}
+.clrelative > input{
+  padding: 0 26px;
+}
+.clApsulute{
+  position: absolute;
+  top: 12px;
+  color: #8BC540;
+  font-size: 19px;
+  left: 17px;
+}
+.mainant > span > div >div{
+width: 100%;
+}

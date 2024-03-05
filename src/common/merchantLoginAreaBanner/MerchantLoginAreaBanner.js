@@ -1,6 +1,6 @@
 
 
-function MerchantLoginAreaBanner() {
+function MerchantLoginAreaBanner({title}) {
     return (
         <>
             <section className="MerchantLoginAreaBanner">
@@ -8,7 +8,7 @@ function MerchantLoginAreaBanner() {
                     <div className="row">
                         <div className="col-lg-12 position-reative">
                             <div className="heading-banner">
-                                <h1>Merchant Login</h1>
+                                <h1>{title}</h1>
                             </div>
                         </div>
                     </div>

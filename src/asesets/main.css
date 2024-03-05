@@ -29551,3 +29551,98 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
 .LayoutMain .BodyArea .ContainerMain .ContentArea {
   padding: 30px;
 }
+
+.MerchantLoginAreaBanner {
+  background-image: url('../asesets/banner/Rectangle\ 168.png');
+  /* background-color: rgba(248, 247, 216, 0.7); */
+  background-color: #2E3191;
+  /* width: 1920px; */
+  height: 299px;
+  top: 138px;
+}
+
+.buttonArea .login-area {
+  width: 103px;
+  height: 37px;
+  border: 1px solid #8BC540;
+  border-radius: 1111px;
+  color: #8BC540;
+}
+
+.buttonArea .sign-area {
+  width: 103px;
+  height: 37px;
+  border-radius: 1111px;
+  background-color: #2E3191;
+  color: #fff;
+}
+
+.header-sec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading-banner h1 {
+  color: #fff;
+  top: 112px;
+  position: absolute;
+}
+
+.position-reative {
+  position: relative;
+}
+
+.login-area-sec {
+  width: 600px;
+  margin: auto;
+}
+
+.email-mobile-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileitab {
+  width: 205px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #2E3191;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.emailtab {
+  width: 205px;
+  height: 40px;
+  border-radius: 10px;
+  /* background-color: #2E3191; */
+  border: 1px solid #8BC540;
+  /* color: #fff; */
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-login-phone {
+  margin-top: 20px;
+}
+
+.input-group-text svg {
+  color: #8BC540;
+}
+
+.btn-login {
+  width: 100%;
+  background-color: #8BC540 !important;
+  padding: 10px;
+  text-align: center;
+  border-radius: 13px;
+  color: #fff !important;
+  font-weight: 700 !important;
+}

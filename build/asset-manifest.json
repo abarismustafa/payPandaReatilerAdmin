@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d8ef52bf.css",
+    "main.js": "/static/js/main.2818d2a5.js",
+    "static/js/592.9bb6ba8d.chunk.js": "/static/js/592.9bb6ba8d.chunk.js",
+    "static/media/banner-1.png": "/static/media/banner-1.18334da150cbd0340c70.png",
+    "static/media/banner-3.png": "/static/media/banner-3.a7c8f09b51b9839b38b4.png",
+    "static/media/s-4.jpg": "/static/media/s-4.5ae31920646a9a10ee97.jpg",
+    "static/media/privacy-banner.png": "/static/media/privacy-banner.83a4a879bd08fcdb160d.png",
+    "static/media/s-3.jpg": "/static/media/s-3.8092fb682558a8837c12.jpg",
+    "static/media/s-1.jpg": "/static/media/s-1.b78083c90427cf022f09.jpg",
+    "static/media/terms-conditions-banner.png": "/static/media/terms-conditions-banner.5c15346edcf768c256e5.png",
+    "static/media/s-5.jpg": "/static/media/s-5.306ec95de7f4b1edcbc8.jpg",
+    "static/media/banner-2.png": "/static/media/banner-2.a2f6a5d012cc3b144b5d.png",
+    "static/media/refund_and_cancellation_policy.png": "/static/media/refund_and_cancellation_policy.e7bcaabca420fab3a932.png",
+    "static/media/contact-banner.png": "/static/media/contact-banner.407e06e40e339b59e983.png",
+    "static/media/about_banner.png": "/static/media/about_banner.0f83ff40ea40ea27645d.png",
+    "static/media/services-banner.png": "/static/media/services-banner.498a55b22a7671da55b7.png",
+    "static/media/bus-booking.svg": "/static/media/bus-booking.2aa7b50d409cb97591af6e7dd6007b1f.svg",
+    "static/media/grievance-redressal-banner.png": "/static/media/grievance-redressal-banner.0bdc00fe8a4141404af4.png",
+    "static/media/insurance.svg": "/static/media/insurance.8868c5f76568b6ec0d5f6db0e6c431e5.svg",
+    "static/media/signIn-img.png": "/static/media/signIn-img.e3edfb05f9e9cafc12db.png",
+    "static/media/wholesale-market.svg": "/static/media/wholesale-market.46c464739bc3587aff201855428e541e.svg",
+    "static/media/CMS.svg": "/static/media/CMS.5f027994d009b52ea1f6d1af6e8e75ee.svg",
+    "static/media/flight-booking.svg": "/static/media/flight-booking.be167be1a1fb5b7fb277faacc48db8f4.svg",
+    "static/media/service.svg": "/static/media/service.db5e93da7dfbc9bcdec8d265859a1f8d.svg",
+    "static/media/AEPS-Logo.png": "/static/media/AEPS-Logo.8acf7d27f2a000fdc0c0.png",
+    "static/media/bill-payment.svg": "/static/media/bill-payment.84bc9ec6345db871c42ae8ad9a3bc5fa.svg",
+    "static/media/adhar-banking.svg": "/static/media/adhar-banking.c07ca4d67d1e268fdfa42912ebb845d1.svg",
+    "static/media/pngtree-letter-e-logo-png-image_3976626.png": "/static/media/pngtree-letter-e-logo-png-image_3976626.3177c600fc45568862b2.png",
+    "static/media/mobile-recharge.svg": "/static/media/mobile-recharge.97cb3ff8c5d61a1fe4608833aa9dff7c.svg",
+    "static/media/PayPanda_logo_Final-09-e1670775011263.png": "/static/media/PayPanda_logo_Final-09-e1670775011263.3ae9a8db8f0b32a0e106.png",
+    "static/media/logo1.png": "/static/media/logo1.074bf856ed8157af23d1.png",
+    "index.html": "/index.html",
+    "main.d8ef52bf.css.map": "/static/css/main.d8ef52bf.css.map",
+    "main.2818d2a5.js.map": "/static/js/main.2818d2a5.js.map",
+    "592.9bb6ba8d.chunk.js.map": "/static/js/592.9bb6ba8d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8ef52bf.css",
+    "static/js/main.2818d2a5.js"
+  ]
+}

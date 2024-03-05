@@ -8,7 +8,7 @@ function MerchantLoginArea() {
     return (
         <>
             <MerchantLoginHeader />
-            <MerchantLoginAreaBanner />
+            <MerchantLoginAreaBanner title="Merchant Login"/>
             <section className="my-4">
                 <div className="container">
                     <div className="row">

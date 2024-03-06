@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom'
 import imageLogo from '../../asesets/logo/image 2.png'
 function MerchantLoginHeader() {
     return (
@@ -12,8 +13,8 @@ function MerchantLoginHeader() {
                                     <img src={imageLogo} alt="" />
                                 </div>
                                 <div className='buttonArea'>
-                                    <button className='btn login-area me-3'>LOGIN</button>
-                                    <button className='btn sign-area'>SIGNUP</button>
+                                    <Link to="/login-area" className='btn login-area me-3'>LOGIN</Link>
+                                    <Link to="/Signup" className='btn sign-area'>SIGNUP</Link>
                                 </div>
                             </div>
                         </div>

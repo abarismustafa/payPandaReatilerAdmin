@@ -1,25 +1,18 @@
 
-function TabMobileEmail() {
+function TabMobileEmail({ tabs, handleTabClick, count, setState }) {
     return (
         <>
             <div className="email-mobile-tab">
-                <div className="mobileitab me-3">
-                    <div className="form-check">
-                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="via-mobile" defaultChecked />
-                        <label className="form-check-label" htmlFor="via-mobile">
-                            Via Mobile
-                        </label>
+                {tabs && tabs?.map((item, i) => {
+                    return <div className="mobileitab me-3">
+                        <div className="form-check" onClick={() => handleTabClick(item.id, i)}>
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" id={item.id} checked={i == count} />
+                            <label className="form-check-label" htmlFor={item.id}>
+                                {item.label}
+                            </label>
+                        </div>
                     </div>
-
-                </div>
-                <div className="emailtab">
-                    <div className="form-check">
-                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="via-email" />
-                        <label className="form-check-label" htmlFor="via-email">
-                            Via Email
-                        </label>
-                    </div>
-                </div>
+                })}
             </div>
         </>
     )

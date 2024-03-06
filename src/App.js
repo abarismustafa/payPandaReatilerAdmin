@@ -74,6 +74,7 @@ import CreatePinPage from './pages/admin/settings/createPin/CreatePinPage';
 import OtpSecurityPage from './pages/admin/settings/otpSecurity';
 import TdsCertificatePage from './pages/admin/tdsCertificate';
 import MerchantLoginAreaPage from './pages/merchantLoginArea/Index';
+import SinUpMerchantPage from './pages/merchantLoginArea/sinupMerchant';
 
 function App() {
   const [isLogin, setislogin] = useState(window.localStorage.getItem('login'))
@@ -98,6 +99,7 @@ function App() {
         <Route path='/grievance-redressal-policy/:id' element={<GrievancePolicyPage />} />
         <Route path='/refund-and-cancellation-policy/:id' element={<RefundCancilationPage />} /> */}
         <Route path='login-area' element={<MerchantLoginAreaPage />} />
+        <Route path='Signup' element={<SinUpMerchantPage />} />
         <Route path="/" element={<Navigate to="/admin" />} />
         <Route path='/admin' element={<DasRightSectionPage />}>
           <Route path="" element={<DasBoardPage />} >

@@ -29646,3 +29646,17 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   color: #fff !important;
   font-weight: 700 !important;
 }
+
+.text-align-center {
+  text-align: center !important;
+}
+
+.text-align-center a {
+  color: black;
+}
+
+.login-area-sec h1 {
+  font-weight: 600;
+  font-size: 33px;
+  line-height: 55px;
+}

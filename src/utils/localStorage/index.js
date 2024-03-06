@@ -7,7 +7,7 @@ export function SaveUserDeatilsLocalStorage(token) {
 }
 
 export function getUserDetails() {
-    return window.localStorage.getItem("userDetails")
+    return window.localStorage.setItem("userId")
 }
 
 export function getToken() {

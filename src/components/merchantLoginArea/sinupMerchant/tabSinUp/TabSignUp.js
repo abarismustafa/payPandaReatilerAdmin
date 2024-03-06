@@ -1,24 +1,25 @@
 
 import { useEffect, useState } from "react";
 import { userType } from "../../../../api/login/Login";
-function TabSignUp() {
-    const [data, setData] = useState(null)
+function TabSignUp({ data, count, tabChange }) {
 
-    const userTypeget = async () => {
-        try {
-            const res = await userType()
-            setData(res?.data)
-        } catch (error) {
 
-        }
-    }
-    useEffect(() => {
-        userTypeget()
-    }, [])
+    // onClick={() => { setCount(i) }}
+
     return (
         <>
-            <div className="email-mobile-tab">
-                <div className="mobileitab me-3">
+            <div className="email-mobile-tab mb-2">
+                {data && data?.map((item, i) => {
+                    return <div className="mobileitab me-3" onClick={() => tabChange(i)}>
+                        <div className="form-check" >
+                            <input className="form-check-input" type="radio" name="retailer" id={item?._id} checked={i == count} />
+                            <label className="form-check-label" htmlFor={item?._id}>
+                                {item?.user_type}
+                            </label>
+                        </div>
+                    </div>
+                })}
+                {/* <div className="mobileitab me-3">
                     <div className="form-check" >
                         <input className="form-check-input" type="radio" name="retailer" id="retailer" defaultChecked />
                         <label className="form-check-label" htmlFor="retailer">
@@ -33,7 +34,7 @@ function TabSignUp() {
                             Distributer
                         </label>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </>

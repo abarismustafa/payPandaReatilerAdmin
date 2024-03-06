@@ -4,23 +4,75 @@ import { FaRegUser } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { TiTick } from "react-icons/ti";
-import { useState } from "react";
-function SignUpMerchantForm() {
+import { useEffect, useState } from "react";
+import TabSignUp from "../tabSinUp/TabSignUp";
+import { isVerifiedMobileOtp, userType } from "../../../../api/login/Login";
+import { getUserDetails } from "../../../../utils/localStorage";
+function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile, userID }) {
     const [mobileVeridedInput, setMobileVerified] = useState(true)
     const [mobileOtp, setMobileOtp] = useState(false)
     const [emailVeridedInput, setEmailVeridedInput] = useState(false)
     const [emailOtp, setEmailOtp] = useState(false)
     const [formResiter, setFormResiter] = useState(false)
 
+    const [data, setData] = useState(null)
+    const [userId, setUserId] = useState()
+    const [count, setCount] = useState(0)
+
+    const [otp, setOtp] = useState({
+        user_id: userID,
+        otp: ''
+    })
+
+    const otpChandleChange = (e) => {
+        const clone = { ...otp }
+        const vlaue = e.target.value
+        const name = e.target.name
+        clone[name] = vlaue
+        setOtp(clone)
+
+        // const verifyMobile = verifiedPhone(initalValue.mobileNo)
+        // if (verifyMobile) {
+        //     isMobileExit(initalValue.mobileNo)
+        // }
+
+    }
+
+    const userTypeget = async () => {
+        try {
+            const res = await userType()
+            setData(res?.data)
+        } catch (error) {
+        }
+    }
+
+    const tabChange = (i) => {
+        setCount(i)
+    }
+    useEffect(() => {
+        userTypeget()
+    }, [])
+
     const getOtp = () => {
+        mobileGenerateOtpMobile()
         setMobileVerified(false)
         setMobileOtp(true)
     }
+    const submitOtp = async () => {
+        try {
+            const res = await isVerifiedMobileOtp({ ...otp, user_id: userID })
+            if (res?.statusCode == '200') {
+                getUserDetails(res?.data?.user)
+            }
+            console.log(res);
+        } catch (error) {
 
-    const submitOtp = () => {
-        setEmailVeridedInput(true)
-        setMobileOtp(false)
-        setMobileVerified(false)
+        }
+
+
+        // setEmailVeridedInput(true)
+        // setMobileOtp(false)
+        // setMobileVerified(false)
     }
 
     const emailgetOtp = () => {
@@ -52,7 +104,7 @@ function SignUpMerchantForm() {
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1"><FaMobileScreenButton /></span>
-                                <input type="number" className="form-control" placeholder="Enter Mobile Number" />
+                                <input type="number" className="form-control" placeholder="Enter Mobile Number" name="mobileNo" value={initalValue.mobileNo} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="col-lg-12">
@@ -70,7 +122,7 @@ function SignUpMerchantForm() {
                     {mobileOtp ? <> <div className="col-lg-12">
                         <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1"><FaMobileScreenButton /></span>
-                            <input type="number" className="form-control" placeholder="Enter OTP" />
+                            <input type="number" className="form-control" placeholder="Enter OTP" name="otp" value={otp.otp} onChange={otpChandleChange} />
                         </div>
                     </div>
                         <div className="col-lg-12">
@@ -118,7 +170,7 @@ function SignUpMerchantForm() {
 
 
 
-
+                {formResiter ? <TabSignUp data={data} count={count} tabChange={tabChange} /> : <></>}
                 {formResiter ? <form action="">
                     <div className="row">
                         <div className="col-lg-6">

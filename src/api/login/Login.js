@@ -6,6 +6,18 @@ export const userType = (data) => {
   return axiosInstance.get(`${baseUrl}usertype`);
 };
 
+export const isMobileExits = (value) => {
+  return axiosInstance.get(`${baseUrl}auth/isMobileNoExist/${value}`);
+};
+
+export const mobileGenerateOtp = (value) => {
+  return axiosInstance.post(`${baseUrl}auth/mb/verifyMobileNo`, value);
+};
+
+export const isVerifiedMobileOtp = (value) => {
+  return axios.post(`${baseUrl}auth/mb/verifyMobileNoOtp`, value);
+};
+
 // export const LoginSubmit = (data) =>
 //   axiosInstance.post(`${baseUrl}staff/login`, data);
 

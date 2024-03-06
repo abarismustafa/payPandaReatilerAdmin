@@ -29702,6 +29702,27 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   font-size: 19px;
   left: 17px;
 }
-.mainant > span > div >div{
-width: 100%;
+.ant-upload{
+width: 100% !important;
+}
+.kycCall{
+  width: 280px;
+  height: 170px;
+  border: 2px solid #8BC540;
+  border-radius: 7px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.kycicon{
+  font-size: 55px;
+}
+.perakyc{
+  width: 416px;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  font-size: 19px;
 }

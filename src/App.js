@@ -150,7 +150,6 @@ function App() {
           <Route path='Pg_report_rz' element={<PaymentGateWayPage />} />
           <Route path='Aquapay_gift_cards_report' element={<RupayCardReportPage />} />
 
-
           {/* <Route path="" element={<ServiceParent />} ></Route> */}
           <Route path='change_password' element={<PasswordChagePage />} />
           <Route path='change_txnpassword' element={<CreatePinPage />} />

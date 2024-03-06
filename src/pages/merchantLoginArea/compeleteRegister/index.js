@@ -2,12 +2,13 @@ import { Steps } from "antd"
 import MerchantLoginAreaBanner from "../../../common/merchantLoginAreaBanner/MerchantLoginAreaBanner"
 import MerchantLoginHeader from "../../../common/merchantLoginHeader/MerchantLoginHeader"
 import { TopSection } from "../../../components/compeleteRegister/TopSection"
+import { useState } from "react"
+import { UploadDoc } from "../../../components/compeleteRegister/UploadDoc"
+import { VedioKyc } from "../../../components/compeleteRegister/VedioKyc"
 import { FirstForm } from "../../../components/compeleteRegister/FirstForm"
 import { SecForm } from "../../../components/compeleteRegister/SecForm"
-import { useState } from "react"
 import { GstBusinessForm } from "../../../components/compeleteRegister/GstBusinessForm"
 import { BankDetail } from "../../../components/compeleteRegister/BankDetail"
-import { UploadDoc } from "../../../components/compeleteRegister/UploadDoc"
 
 
 
@@ -55,6 +56,7 @@ function CompeleteRegister() {
                                 {state == 2 && <GstBusinessForm setState={setState} />}
                                 {state == 3 && <BankDetail setState={setState} />}
                                 {state == 4 && <UploadDoc setState={setState} />}
+                                {state == 5 && <VedioKyc setState={setState} />}
                             </div>
 
                         </div>

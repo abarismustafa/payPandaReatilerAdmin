@@ -29647,7 +29647,6 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   font-weight: 700 !important;
 }
 
-<<<<<<< HEAD
 .text-align-center {
   text-align: center !important;
 }
@@ -29660,7 +29659,8 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   font-weight: 600;
   font-size: 33px;
   line-height: 55px;
-=======
+}
+
 .login-area-regis {
   text-align: center;
 }
@@ -29689,34 +29689,41 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   width: 416px;
   color: grey;
 }
-.firstFor{
+
+.firstFor {
   width: 650px;
   margin: 30px auto;
 }
-.pancars{
+
+.pancars {
   color: #2E3191;
- 
+
 }
-.pancars > label{
+
+.pancars>label {
   margin: 0;
 }
-.pancars > div{
- color: #9F9F9F;
+
+.pancars>div {
+  color: #9F9F9F;
 }
-.clrelative{
+
+.clrelative {
   position: relative;
 }
-.clrelative > input{
+
+.clrelative>input {
   padding: 0 26px;
 }
-.clApsulute{
+
+.clApsulute {
   position: absolute;
   top: 12px;
   color: #8BC540;
   font-size: 19px;
   left: 17px;
 }
-.mainant > span > div >div{
-width: 100%;
->>>>>>> 52ee0382af6a312e5f18d1252304485b7256c31a
+
+.mainant>span>div>div {
+  width: 100%;
 }

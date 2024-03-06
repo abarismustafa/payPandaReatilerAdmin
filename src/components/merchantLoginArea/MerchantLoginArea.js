@@ -21,11 +21,7 @@ function MerchantLoginArea() {
     return (
         <>
             <MerchantLoginHeader />
-<<<<<<< HEAD
             <MerchantLoginAreaBanner title="Merchant login" />
-=======
-            <MerchantLoginAreaBanner title="Merchant Login"/>
->>>>>>> 52ee0382af6a312e5f18d1252304485b7256c31a
             <section className="my-4">
                 <div className="container">
                     <div className="row">

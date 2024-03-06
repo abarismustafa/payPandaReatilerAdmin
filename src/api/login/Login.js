@@ -18,6 +18,10 @@ export const isVerifiedMobileOtp = (value) => {
   return axios.post(`${baseUrl}auth/mb/verifyMobileNoOtp`, value);
 };
 
+export const panNumberVarify = (value) => {
+  return axios.post(`${baseUrl}verification/pan/verifypanOtp`, value);
+};
+
 // export const LoginSubmit = (data) =>
 //   axiosInstance.post(`${baseUrl}staff/login`, data);
 

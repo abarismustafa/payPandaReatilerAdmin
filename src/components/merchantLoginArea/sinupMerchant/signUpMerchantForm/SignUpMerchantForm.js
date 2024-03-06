@@ -6,7 +6,6 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { TiTick } from "react-icons/ti";
 import { useState } from "react";
 function SignUpMerchantForm() {
-
     const [mobileVeridedInput, setMobileVerified] = useState(true)
     const [mobileOtp, setMobileOtp] = useState(false)
     const [emailVeridedInput, setEmailVeridedInput] = useState(false)

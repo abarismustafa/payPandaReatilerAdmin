@@ -74,7 +74,11 @@ import CreatePinPage from './pages/admin/settings/createPin/CreatePinPage';
 import OtpSecurityPage from './pages/admin/settings/otpSecurity';
 import TdsCertificatePage from './pages/admin/tdsCertificate';
 import MerchantLoginAreaPage from './pages/merchantLoginArea/Index';
+<<<<<<< HEAD
 import SinUpMerchantPage from './pages/merchantLoginArea/sinupMerchant';
+=======
+import CompeleteRegister from './pages/merchantLoginArea/compeleteRegister';
+>>>>>>> 52ee0382af6a312e5f18d1252304485b7256c31a
 
 function App() {
   const [isLogin, setislogin] = useState(window.localStorage.getItem('login'))
@@ -98,9 +102,15 @@ function App() {
         <Route path='/terms-conditions/:id' element={<TermConditionPage />} />
         <Route path='/grievance-redressal-policy/:id' element={<GrievancePolicyPage />} />
         <Route path='/refund-and-cancellation-policy/:id' element={<RefundCancilationPage />} /> */}
+<<<<<<< HEAD
         <Route path='login-area' element={<MerchantLoginAreaPage />} />
         <Route path='Signup' element={<SinUpMerchantPage />} />
         <Route path="/" element={<Navigate to="/admin" />} />
+=======
+        <Route path="/" element={<Navigate to="/login-area" />} />
+        <Route path='/login-area' element={<MerchantLoginAreaPage />} />
+        <Route path='/registrationComplete' element={<CompeleteRegister/>} />
+>>>>>>> 52ee0382af6a312e5f18d1252304485b7256c31a
         <Route path='/admin' element={<DasRightSectionPage />}>
           <Route path="" element={<DasBoardPage />} >
             <Route path='mobile-reacharge' element={<MobileRecharge />} />

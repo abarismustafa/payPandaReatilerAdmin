@@ -1,6 +1,6 @@
 
 
-function MerchantLoginAreaBanner({title}) {
+function MerchantLoginAreaBanner({ title }) {
     return (
         <>
             <section className="MerchantLoginAreaBanner">

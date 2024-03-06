@@ -1,13 +1,13 @@
-import { MdOutlinePhoneAndroid } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
-function MerchantLoginForm() {
+function MerchantLoginEmail() {
     return (
         <>
             <div className="mobile-login-phone">
                 <form action="">
                     <div className="input-group mb-3">
-                        <span className="input-group-text" id="basic-addon1"><MdOutlinePhoneAndroid /></span>
-                        <input type="number" className="form-control" placeholder="Enter Mobile Number / Enter Email" />
+                        <span className="input-group-text" id="basic-addon1"><MdEmail /></span>
+                        <input type="number" className="form-control" placeholder="Enter Email" />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" id="basic-addon1"><RiLockPasswordFill /></span>
@@ -25,4 +25,4 @@ function MerchantLoginForm() {
         </>
     )
 }
-export default MerchantLoginForm
+export default MerchantLoginEmail

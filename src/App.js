@@ -74,6 +74,7 @@ import CreatePinPage from './pages/admin/settings/createPin/CreatePinPage';
 import OtpSecurityPage from './pages/admin/settings/otpSecurity';
 import TdsCertificatePage from './pages/admin/tdsCertificate';
 import MerchantLoginAreaPage from './pages/merchantLoginArea/Index';
+import SinUpMerchantPage from './pages/merchantLoginArea/sinupMerchant';
 import CompeleteRegister from './pages/merchantLoginArea/compeleteRegister';
 
 function App() {
@@ -98,9 +99,11 @@ function App() {
         <Route path='/terms-conditions/:id' element={<TermConditionPage />} />
         <Route path='/grievance-redressal-policy/:id' element={<GrievancePolicyPage />} />
         <Route path='/refund-and-cancellation-policy/:id' element={<RefundCancilationPage />} /> */}
+        <Route path='login-area' element={<MerchantLoginAreaPage />} />
+        <Route path='Signup' element={<SinUpMerchantPage />} />
         <Route path="/" element={<Navigate to="/login-area" />} />
         <Route path='/login-area' element={<MerchantLoginAreaPage />} />
-        <Route path='/registrationComplete' element={<CompeleteRegister/>} />
+        <Route path='/registrationComplete' element={<CompeleteRegister />} />
         <Route path='/admin' element={<DasRightSectionPage />}>
           <Route path="" element={<DasBoardPage />} >
             <Route path='mobile-reacharge' element={<MobileRecharge />} />

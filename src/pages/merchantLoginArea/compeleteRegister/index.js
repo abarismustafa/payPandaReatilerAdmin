@@ -2,13 +2,13 @@ import { Steps } from "antd"
 import MerchantLoginAreaBanner from "../../../common/merchantLoginAreaBanner/MerchantLoginAreaBanner"
 import MerchantLoginHeader from "../../../common/merchantLoginHeader/MerchantLoginHeader"
 import { TopSection } from "../../../components/compeleteRegister/TopSection"
-import { FirstForm } from "../../../components/compeleteRegister/FirstForm"
-import { SecForm } from "../../../components/compeleteRegister/SecForm"
 import { useState } from "react"
-import { GstBusinessForm } from "../../../components/compeleteRegister/GstBusinessForm"
-import { BankDetail } from "../../../components/compeleteRegister/BankDetail"
 import { UploadDoc } from "../../../components/compeleteRegister/UploadDoc"
 import { VedioKyc } from "../../../components/compeleteRegister/VedioKyc"
+import { FirstForm } from "../../../components/compeleteRegister/FIrstForm"
+import { SecForm } from "../../../components/compeleteRegister/SecForm"
+import { GstBusinessForm } from "../../../components/compeleteRegister/GstBusinessForm"
+import { BankDetail } from "../../../components/compeleteRegister/BankDetail"
 
 
 

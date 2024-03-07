@@ -21,6 +21,18 @@ export const registerUser = (value) => {
   return axiosInstance.post(`${baseUrl}auth/mb/register`, value);
 };
 
+export const panNumberVarify = (value) => {
+  return axios.post(`${baseUrl}verification/pan/verifypanOtp`, value);
+};
+
+export const adharGenerateOtp = (value) => {
+  return axios.post(`${baseUrl}verification/adhaar/otp`, value);
+};
+
+export const subOtp = (value) => {
+  return axios.post(`${baseUrl}/verification/adhaar/verify`, value);
+};
+
 export const userLogin = (value) => {
   return axiosInstance.post(`${baseUrl}auth/mb/login`, value);
 };

@@ -11,22 +11,30 @@ function SignUpMerchant() {
     const [userID, setUserID] = useState()
 
     const [initalValue, setInitialValue] = useState({
-        mobileNo: '',
+        mobileNo: '91',
     })
 
     console.log(initalValue);
 
     const handleChange = (e) => {
+        
         const clone = { ...initalValue }
         const vlaue = e.target.value
         const name = e.target.name
+      
         clone[name] = vlaue
+        if (clone.mobileNo?.length == 13) {
+            return
+         }
         setInitialValue(clone)
-
-        const verifyMobile = verifiedPhone(initalValue.mobileNo)
-        if (verifyMobile) {
+        if (clone.mobileNo?.length == 12) {
             isMobileExit(initalValue.mobileNo)
         }
+       
+        const verifyMobile = verifiedPhone(initalValue.mobileNo)
+        // if (verifyMobile) {
+        //     isMobileExit(initalValue.mobileNo)
+        // }
 
     }
 

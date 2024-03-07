@@ -29,6 +29,9 @@ export const adharGenerateOtp = (value) => {
 export const subOtp = (value) => {
   return axios.post(`${baseUrl}/verification/adhaar/verify`, value);
 };
+export const personalDetails = (value) => {
+  return axios.post(`${baseUrl}/verification/personalDetails`, value);
+};
 
 // export const LoginSubmit = (data) =>
 //   axiosInstance.post(`${baseUrl}staff/login`, data);

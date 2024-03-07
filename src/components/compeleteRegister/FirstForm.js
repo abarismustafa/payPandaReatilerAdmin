@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { adharGenerateOtp, panNumberVarify } from "../../api/login/Login"
+import { adharGenerateOtp, panNumberVarify, subOtp } from "../../api/login/Login"
 import { toast, ToastContainer } from 'react-toastify';
 export const FirstForm = ({ setState }) => {
     const [pannum, setpannum] = useState()
@@ -42,12 +42,12 @@ export const FirstForm = ({ setState }) => {
     const OtpSubmit = async () => {
         setloader3(true)
         try {
-            await adharGenerateOtp({ otp: OtpAdhar, user_id: window.localStorage.getItem('userToken') })
+            await subOtp({ otp: OtpAdhar, user_id: window.localStorage.getItem('userToken') })
             setloader3(false)
             toastSuccessMessage('Identity Verification Successfully')
-            // setTimeout(() => {
-            //     setadharOtpGet(true)
-            // }, 1000);
+            setTimeout(() => {
+                setState(1)
+            }, 1000);
         } catch (error) {
             setloader3(false)
         }
@@ -85,7 +85,7 @@ export const FirstForm = ({ setState }) => {
             display: 'flex',
             justifyContent: 'end'
         }}>
-            <button type="submit" onClick={() => setState((1))} style={{ backgroundColor: '#2E3191' }} disabled={true} className="btn btn-primary">Next</button>
+            {/* <button type="submit" onClick={() => setState((1))} style={{ backgroundColor: '#2E3191' }} disabled={true} className="btn btn-primary">Next</button> */}
         </div>
         <ToastContainer />
     </form >

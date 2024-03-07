@@ -26,9 +26,8 @@ export const SecForm = ({setState}) => {
             <div className="col-6 mb-3 clrelative">
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Select Country</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="India">India</option>
+                    <option value="Pakistan">Pakistan</option>
                 </select>
                 {/* <IoLocationOutline className="clApsulute"/> */}
             </div>
@@ -58,8 +57,8 @@ export const SecForm = ({setState}) => {
                 display: 'flex',
                 justifyContent: 'space-between'
             }}>
-                <button type="submit" onClick={()=>{setState(0)}} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button>
-                <button type="submit" onClick={()=>{setState(2)}} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Next</button>
+                {/* <button type="submit" onClick={()=>{setState(0)}} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button>
+                <button type="submit" onClick={()=>{setState(2)}} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Next</button> */}
             </div>
         </form >
     </div>

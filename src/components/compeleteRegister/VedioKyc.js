@@ -20,7 +20,7 @@ export const VedioKyc = ({ setState }) => {
                 display: 'flex',
                 justifyContent: 'space-between'
             }}>
-                <button type="submit" onClick={() => { setState(4) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button>
+                {/* <button type="submit" onClick={() => { setState(4) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button> */}
                 <button type="button" style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Submit</button>
             </div>
         </form >

@@ -59,8 +59,8 @@ export const GstBusinessForm = ({ setState }) => {
                 display: 'flex',
                 justifyContent: 'space-between'
             }}>
-                <button type="submit" onClick={() => { setState(1) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button>
-                <button type="submit" onClick={() => { setState(3) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Next</button>
+                {/* <button type="submit" onClick={() => { setState(1) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button>
+                <button type="submit" onClick={() => { setState(3) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Next</button> */}
             </div>
         </form >
     </div>

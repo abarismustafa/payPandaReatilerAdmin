@@ -14,6 +14,9 @@ function SignUpMerchant() {
     const [emailOtp, setEmailOtp] = useState(false)
     const [formResiter, setFormResiter] = useState(false)
 
+    const [countryCode, setCountryCode] = useState()
+    console.log(countryCode);
+
     const [userID, setUserID] = useState()
 
     const [initalValue, setInitialValue] = useState({
@@ -36,6 +39,11 @@ function SignUpMerchant() {
                 isMobileExit(initalValue.mobileNo)
             }
         }
+    }
+
+    const handleCountryCode = (e) => {
+        setCountryCode(e.target.value);
+
     }
 
     const verifiedPhone = (input) => {
@@ -136,6 +144,9 @@ function SignUpMerchant() {
                                     handleChange={handleChange}
                                     mobileGenerateOtpMobile={mobileGenerateOtpMobile}
                                     userID={userID}
+
+                                    handleCountryCode={handleCountryCode}
+                                    countryCode={countryCode}
                                 />
                             </div>
                         </div>

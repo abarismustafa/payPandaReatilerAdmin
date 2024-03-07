@@ -6,14 +6,16 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { TiTick } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import TabSignUp from "../tabSinUp/TabSignUp";
-import { isVerifiedMobileOtp, registerUser, userType } from "../../../../api/login/Login";
+import { CountryList, isVerifiedMobileOtp, registerUser, userType } from "../../../../api/login/Login";
 import { getUserDetails } from "../../../../utils/localStorage";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile, userID, mobileVeridedInput, getOtp, mobileOtp, emailVeridedInput, emailgetOtp, nextForm, emailOtp, submitOtpEmail, formResiter, setEmailVeridedInput, setMobileOtp, setMobileVerified }) {
+function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile, userID, mobileVeridedInput, getOtp, mobileOtp, emailVeridedInput, emailgetOtp, nextForm, emailOtp, submitOtpEmail, formResiter, setEmailVeridedInput, setMobileOtp, setMobileVerified, handleCountryCode, countryCode }) {
 
     const navigate = useNavigate()
     const [data, setData] = useState(null)
+    const [country, setCountry] = useState(null)
+    // console.log(country);
 
     const [userId, setUserId] = useState()
     const [mobileId, setMobile] = useState()
@@ -37,6 +39,21 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
         name: '',
         password: ''
     })
+
+    const countryget = async () => {
+        try {
+            const res = await CountryList()
+            setCountry(res?.data)
+        } catch (error) {
+
+        }
+
+    }
+    useEffect(() => {
+        countryget()
+    }, [])
+
+
 
     const validation = (values) => {
         const error = {}
@@ -67,12 +84,6 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
         const name = e.target.name
         clone[name] = vlaue
         setOtp(clone)
-
-        // const verifyMobile = verifiedPhone(initalValue.mobileNo)
-        // if (verifyMobile) {
-        //     isMobileExit(initalValue.mobileNo)
-        // }
-
     }
 
     const handleResiter = (e) => {
@@ -84,7 +95,6 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
     }
 
     const toastSuccessMessage = (message) => {
-        console.log(message);
         toast.success(`${message}`, {
             position: "top-center",
         });
@@ -188,6 +198,14 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1"><FaMobileScreenButton /></span>
+                                <span className="input-group-text input-group-text-2" id="basic-addon1" value={countryCode} onChange={handleCountryCode}>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>select Country</option>
+                                        {country && country?.map((item) => {
+                                            return <option >{item?.code}</option>
+                                        })}
+                                    </select>
+                                </span>
                                 <input type="number" className="form-control" placeholder="Enter Mobile Number" name="mobileNo" value={initalValue.mobileNo} onChange={handleChange} />
                             </div>
                         </div>

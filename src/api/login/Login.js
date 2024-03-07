@@ -54,7 +54,9 @@ export const cloudImage = (value) => {
 export const uploadDocument = (value) => {
   return axios.post(`${baseUrl}userdocument/add_doc`, value);
 };
-
+export const CountryList = (value) => {
+  return axiosInstance.get(`${baseUrl}country/mb/public`);
+};
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

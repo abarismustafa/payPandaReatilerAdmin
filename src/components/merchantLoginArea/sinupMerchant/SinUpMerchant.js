@@ -83,10 +83,8 @@ function SignUpMerchant() {
         }
     }
 
-
     const getOtp = () => {
         mobileGenerateOtpMobile()
-
     }
 
     const emailgetOtp = () => {

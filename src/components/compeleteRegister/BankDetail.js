@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { bankAccount } from "../../api/login/Login";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 export const BankDetail = ({ setState }) => {
 
     const [initailValue, setInitital] = useState({
@@ -13,6 +13,44 @@ export const BankDetail = ({ setState }) => {
         user_id: ''
     })
 
+    const [errorValue, setErrorValue] = useState({})
+    console.log(errorValue);
+
+    const validation = (values) => {
+        const error = {}
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        const accountRejexa = /^\d{ 9, 18}$/i
+        const ifsc = /^[A-Z]{4}0[A-Z0-9]{6}$/gm
+        if (!values.name) {
+            error.name = "Name is Required!"
+        }
+        if (!values.phone) {
+            error.phone = "Phone Number is Required!"
+
+        }
+        if (!values.bankAccount) {
+            error.bankAccount = "Bank Account Number is Required! ";
+        } else if (!accountRejexa.test(values.bankAccount)) {
+            error.email = "Invalid Bank Account Number";
+        }
+        // if (!values.bankAccount) {
+        //     error.bankAccount = "Bank Account Number is Required!"
+
+        // }
+        if (!values.ifsc) {
+            error.ifsc = "IFSC Code is Required! ";
+        } else if (!ifsc.test(values.ifsc)) {
+            error.email = "Invalid Bank IFSC Code";
+        }
+        return error
+    }
+
+    const toastSuccessMessage = (str) => {
+        toast.success(`${str}`, {
+            position: "top-center"
+        })
+    };
+
     const handleChange = (e) => {
         const clone = { ...initailValue }
         const vlaue = e.target.value
@@ -21,14 +59,18 @@ export const BankDetail = ({ setState }) => {
         setInitital(clone)
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (event) => {
+        const clone = { ...initailValue, user_id: window.localStorage.getItem('userIdToken') }
+        // event.preventDefault()
+        // setErrorValue(validation(clone))
         try {
-            const res = await bankAccount({ ...initailValue, user_id: window.localStorage.getItem('userToken') })
+            const res = await bankAccount(clone)
+            if (res?.data?.statusCode == '200') {
+                toastSuccessMessage('Bank added successfully')
+            }
         } catch (error) {
 
         }
-
-        console.log({ ...initailValue, user_id: window.localStorage.getItem('userToken') });
     }
 
     return <div className="container">
@@ -37,26 +79,35 @@ export const BankDetail = ({ setState }) => {
             <div className="col-6 mb-3 clrelative">
                 <input type="text" className="form-control" id="exampleInputEmail1" name="name" value={initailValue.name} placeholder="Enter Name" onChange={handleChange} />
                 {/* <IoLocationOutline className="clApsulute" /> */}
+                <p style={{ color: "red", marginBottom: '2px' }}>
+                    {errorValue.name}
+                </p>
             </div>
 
             <div className="col-6 mb-3 clrelative">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Search Branch</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                <input type="number" className="form-control" id="exampleInputEmail1" name="phone" value={initailValue.phone} placeholder="Enter Mobile Number" onChange={handleChange} />
+                {/* <IoLocationOutline className="clApsulute" /> */}
+                <p style={{ color: "red", marginBottom: '2px' }}>
+                    {errorValue.phone}
+                </p>
             </div>
+
 
             <div className="col-6 mb-3 clrelative">
                 <input type="text" className="form-control" id="exampleInputEmail1" name="ifsc" value={initailValue.ifsc} placeholder="Enter IFCS Code" onChange={handleChange} />
                 <IoLocationOutline className="clApsulute" />
+                <p style={{ color: "red", marginBottom: '2px' }}>
+                    {errorValue.ifsc}
+                </p>
             </div>
             <div className="col-6 mb-3 clrelative">
                 <input type="number" className="form-control" id="exampleInputEmail1" name="bankAccount" value={initailValue.bankAccount} placeholder="Enter Account Number" onChange={handleChange} />
                 <IoLocationOutline className="clApsulute" />
+                <p style={{ color: "red", marginBottom: '2px' }}>
+                    {errorValue.bankAccount}
+                </p>
             </div>
-            <div className="row">
+            {/* <div className="row">
                 <h6>Select acount type</h6>
                 <div className="d-flex" style={{ margin: "10px 0 ", padding: "0" }}>
                     <div class="form-check" style={{ margin: "0 20px" }}>
@@ -72,7 +123,7 @@ export const BankDetail = ({ setState }) => {
                         </label>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div style={{
                 display: 'flex',

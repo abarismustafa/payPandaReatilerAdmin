@@ -22,6 +22,14 @@ export const panNumberVarify = (value) => {
   return axios.post(`${baseUrl}verification/pan/verifypanOtp`, value);
 };
 
+export const adharGenerateOtp = (value) => {
+  return axios.post(`${baseUrl}verification/adhaar/otp`, value);
+};
+
+export const subOtp = (value) => {
+  return axios.post(`${baseUrl}/verification/adhaar/verify`, value);
+};
+
 // export const LoginSubmit = (data) =>
 //   axiosInstance.post(`${baseUrl}staff/login`, data);
 

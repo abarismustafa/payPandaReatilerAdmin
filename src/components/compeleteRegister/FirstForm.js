@@ -85,7 +85,7 @@ export const FirstForm = ({ setState }) => {
             display: 'flex',
             justifyContent: 'end'
         }}>
-            {/* <button type="submit" onClick={() => setState((1))} style={{ backgroundColor: '#2E3191' }} disabled={true} className="btn btn-primary">Next</button> */}
+            {/* <button type="submit" onClick={() => setState((2))} style={{ backgroundColor: '#2E3191' }}  className="btn btn-primary">Next</button> */}
         </div>
         <ToastContainer />
     </form >

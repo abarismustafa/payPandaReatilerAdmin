@@ -11,11 +11,14 @@ export const isMobileExits = (value) => {
 };
 
 export const mobileGenerateOtp = (value) => {
-  return axiosInstance.post(`${baseUrl}auth/mb/verifyMobileNo`, value);
+  return axios.post(`${baseUrl}auth/mb/verifyMobileNo`, value);
 };
 
 export const isVerifiedMobileOtp = (value) => {
   return axios.post(`${baseUrl}auth/mb/verifyMobileNoOtp`, value);
+};
+export const registerUser = (value) => {
+  return axiosInstance.post(`${baseUrl}auth/mb/register`, value);
 };
 
 export const panNumberVarify = (value) => {
@@ -32,9 +35,27 @@ export const subOtp = (value) => {
 export const personalDetails = (value) => {
   return axios.post(`${baseUrl}/verification/personalDetails`, value);
 };
+export const GstBusiness = (value) => {
+  return axios.post(`${baseUrl}/verification/gstno`, value);
+};
 
-// export const LoginSubmit = (data) =>
-//   axiosInstance.post(`${baseUrl}staff/login`, data);
+export const userLogin = (value) => {
+  return axiosInstance.post(`${baseUrl}auth/mb/login`, value);
+};
+
+export const bankAccount = (value) => {
+  return axios.post(`${baseUrl}verification/bankAccount`, value);
+};
+
+export const getCountry = (value) => {
+  return axios.get(`${baseUrl}country/mb/public`);
+};
+
+export const getState = (value) => {
+  return axios.get(`${baseUrl}state/mb/public`);
+};
+
+
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

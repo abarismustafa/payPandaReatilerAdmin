@@ -10,7 +10,7 @@ function TabSignUp({ data, count, tabChange }) {
         <>
             <div className="email-mobile-tab mb-2">
                 {data && data?.map((item, i) => {
-                    return <div className="mobileitab me-3" onClick={() => tabChange(i)}>
+                    return <div className="mobileitab me-3" onClick={() => tabChange(i, item?._id)}>
                         <div className="form-check" >
                             <input className="form-check-input" type="radio" name="retailer" id={item?._id} checked={i == count} />
                             <label className="form-check-label" htmlFor={item?._id}>

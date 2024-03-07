@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { userLogin } from "../../../api/login/Login";
+import { SaveUserDeatilsLocalStorage } from "../../../utils/localStorage";
 function MerchantLoginForm() {
     const [initialValue, setInitialValue] = useState({
         entity: '',
@@ -46,8 +47,8 @@ function MerchantLoginForm() {
         // event.preventDefault()
         // setErrorValue(validation(initialValue))
         try {
-            const res = userLogin(initialValue)
-            console.log(res);
+            const res = await userLogin(initialValue)
+            SaveUserDeatilsLocalStorage(res?.data?.user)
         } catch (error) {
 
         }

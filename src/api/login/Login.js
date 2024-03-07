@@ -40,6 +40,21 @@ export const userLogin = (value) => {
 export const bankAccount = (value) => {
   return axios.post(`${baseUrl}verification/bankAccount`, value);
 };
+export const videoKycUpload = (value) => {
+  return axios.post(`${baseUrl}verification/kycUpload`, value);
+};
+
+export const userValidate = (value) => {
+  return axiosInstance.get(`${baseUrl}auth/userValidate`);
+};
+
+export const cloudImage = (value) => {
+  return axios.post(`${baseUrl}cloudinary/addImage`, value);
+};
+export const uploadDocument = (value) => {
+  return axios.post(`${baseUrl}userdocument/add_doc`, value);
+};
+
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

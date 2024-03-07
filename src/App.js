@@ -9,6 +9,7 @@ import './asesets/css/fontAwesom.css'
 import './asesets/css/customAdmin.css'
 import './asesets/css/selectMin.css'
 import './asesets/css/responsive.css'
+import "react-toastify/dist/ReactToastify.css";
 
 
 import Header from './common/header/Header';

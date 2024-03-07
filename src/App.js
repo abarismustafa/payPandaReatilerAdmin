@@ -76,7 +76,7 @@ import TdsCertificatePage from './pages/admin/tdsCertificate';
 import MerchantLoginAreaPage from './pages/merchantLoginArea/Index';
 import SinUpMerchantPage from './pages/merchantLoginArea/sinupMerchant';
 import CompeleteRegister from './pages/merchantLoginArea/compeleteRegister';
-
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [isLogin, setislogin] = useState(window.localStorage.getItem('login'))
 

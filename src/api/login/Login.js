@@ -37,6 +37,10 @@ export const userLogin = (value) => {
   return axiosInstance.post(`${baseUrl}auth/mb/login`, value);
 };
 
+export const bankAccount = (value) => {
+  return axios.post(`${baseUrl}verification/bankAccount`, value);
+};
+
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);
 // };

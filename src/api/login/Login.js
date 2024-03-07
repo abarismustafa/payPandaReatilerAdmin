@@ -11,15 +11,19 @@ export const isMobileExits = (value) => {
 };
 
 export const mobileGenerateOtp = (value) => {
-  return axiosInstance.post(`${baseUrl}auth/mb/verifyMobileNo`, value);
+  return axios.post(`${baseUrl}auth/mb/verifyMobileNo`, value);
 };
 
 export const isVerifiedMobileOtp = (value) => {
   return axios.post(`${baseUrl}auth/mb/verifyMobileNoOtp`, value);
 };
+export const registerUser = (value) => {
+  return axiosInstance.post(`${baseUrl}auth/mb/register`, value);
+};
 
-// export const LoginSubmit = (data) =>
-//   axiosInstance.post(`${baseUrl}staff/login`, data);
+export const userLogin = (value) => {
+  return axiosInstance.post(`${baseUrl}auth/mb/login`, value);
+};
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

@@ -4,9 +4,15 @@ import MerchantLoginHeader from "../../../common/merchantLoginHeader/MerchantLog
 import SignUpMerchantForm from "./signUpMerchantForm/SignUpMerchantForm"
 import TabSignUp from "./tabSinUp/TabSignUp"
 import { isMobileExits, mobileGenerateOtp, userType } from "../../../api/login/Login"
+import { ToastContainer, toast } from "react-toastify"
 
 
 function SignUpMerchant() {
+    const [mobileVeridedInput, setMobileVerified] = useState(true)
+    const [mobileOtp, setMobileOtp] = useState(false)
+    const [emailVeridedInput, setEmailVeridedInput] = useState(false)
+    const [emailOtp, setEmailOtp] = useState(false)
+    const [formResiter, setFormResiter] = useState(false)
 
     const [userID, setUserID] = useState()
 
@@ -14,20 +20,22 @@ function SignUpMerchant() {
         mobileNo: '',
     })
 
-    console.log(initalValue);
-
     const handleChange = (e) => {
-        const clone = { ...initalValue }
-        const vlaue = e.target.value
-        const name = e.target.name
-        clone[name] = vlaue
-        setInitialValue(clone)
 
-        const verifyMobile = verifiedPhone(initalValue.mobileNo)
-        if (verifyMobile) {
-            isMobileExit(initalValue.mobileNo)
+        if (e.target.value?.length == 12) {
+            return;
+        } else {
+            const clone = { ...initalValue }
+            const vlaue = e.target.value
+            const name = e.target.name
+            clone[name] = vlaue
+            setInitialValue(clone)
+
+            const verifyMobile = verifiedPhone(initalValue.mobileNo)
+            if (verifyMobile) {
+                isMobileExit(initalValue.mobileNo)
+            }
         }
-
     }
 
     const verifiedPhone = (input) => {
@@ -51,14 +59,51 @@ function SignUpMerchant() {
         }
     }
 
+
+    const toastSuccessMessage = () => {
+        toast.success(`OTP Send Successfully.`, {
+            position: "top-center",
+        });
+    };
+
     const mobileGenerateOtpMobile = async () => {
+
         try {
             const res = await mobileGenerateOtp(initalValue)
-            setUserID(res?.data?.user);
-            console.log(res);
+            console.log(res?.data);
+            setUserID(res?.data?.data?.user);
+            if (res?.data?.statusCode == '200') {
+                toastSuccessMessage();
+                setMobileVerified(false)
+                setMobileOtp(true)
+            }
+
         } catch (error) {
 
         }
+    }
+
+
+    const getOtp = () => {
+        mobileGenerateOtpMobile()
+
+    }
+
+    const emailgetOtp = () => {
+        // setEmailVeridedInput(false)
+        setEmailOtp(true)
+        setEmailVeridedInput(false)
+    }
+
+    const submitOtpEmail = () => {
+        setFormResiter(true)
+        setEmailVeridedInput(false)
+        setEmailOtp(false)
+    }
+
+    const nextForm = () => {
+        setFormResiter(true)
+        setEmailVeridedInput(false)
     }
 
 
@@ -74,11 +119,31 @@ function SignUpMerchant() {
                             <div className="login-area-sec">
                                 <h1 className="text-align-center">Signup</h1>
 
-                                <SignUpMerchantForm initalValue={initalValue} handleChange={handleChange} mobileGenerateOtpMobile={mobileGenerateOtpMobile} userID={userID} />
+                                <SignUpMerchantForm
+                                    mobileVeridedInput={mobileVeridedInput}
+                                    getOtp={getOtp}
+                                    mobileOtp={mobileOtp}
+                                    emailVeridedInput={emailVeridedInput}
+                                    emailgetOtp={emailgetOtp}
+                                    nextForm={nextForm}
+                                    emailOtp={emailOtp}
+                                    submitOtpEmail={submitOtpEmail}
+                                    formResiter={formResiter}
+                                    setEmailVeridedInput={setEmailVeridedInput}
+
+                                    setMobileOtp={setMobileOtp}
+                                    setMobileVerified={setMobileVerified}
+
+                                    initalValue={initalValue}
+                                    handleChange={handleChange}
+                                    mobileGenerateOtpMobile={mobileGenerateOtpMobile}
+                                    userID={userID}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
+                <ToastContainer />
             </section>
 
         </>

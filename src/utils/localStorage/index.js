@@ -6,8 +6,9 @@ export function SaveUserDeatilsLocalStorage(token) {
     // window.localStorage.setItem("isLogin", true);
 }
 
-export function getUserDetails() {
-    return window.localStorage.setItem("userId")
+export function getUserDetails(id) {
+    console.log(id);
+    return window.localStorage.setItem("userId", id)
 }
 
 export function getToken() {

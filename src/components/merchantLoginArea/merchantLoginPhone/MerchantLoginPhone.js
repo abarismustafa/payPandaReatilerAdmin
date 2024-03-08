@@ -3,6 +3,8 @@ import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { userLogin } from "../../../api/login/Login";
 import { SaveUserDeatilsLocalStorage } from "../../../utils/localStorage";
+import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
 function MerchantLoginForm() {
     const [initialValue, setInitialValue] = useState({
         entity: '',
@@ -10,7 +12,11 @@ function MerchantLoginForm() {
     })
 
     const [errorValue, setErrorValue] = useState({})
-
+    const toastSuccessMessage = (str) => {
+        toast.success(`${str}`, {
+            position: "top-center"
+        })
+    };
     const validation = (values) => {
         const error = {}
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -42,6 +48,8 @@ function MerchantLoginForm() {
         setInitialValue(clone)
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = async () => {
         console.log(initialValue);
         // event.preventDefault()
@@ -49,6 +57,13 @@ function MerchantLoginForm() {
         try {
             const res = await userLogin(initialValue)
             SaveUserDeatilsLocalStorage(res?.data?.user)
+            console.log(res);
+            if(res.statusCode == 200){
+                toastSuccessMessage('Login Successfully')
+                setTimeout(() => {
+                    navigate('/registrationComplete')
+                }, 1000);
+            }
         } catch (error) {
 
         }
@@ -57,6 +72,7 @@ function MerchantLoginForm() {
 
     return (
         <>
+          <ToastContainer />
             <div className="mobile-login-phone">
                 <form action="" >
                     <div className="input-group mb-3">

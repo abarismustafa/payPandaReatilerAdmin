@@ -17,25 +17,29 @@ function SignUpMerchant() {
     const [userID, setUserID] = useState()
 
     const [initalValue, setInitialValue] = useState({
-        mobileNo: '',
+        mobileNo: '91',
     })
 
     const handleChange = (e) => {
-
-        if (e.target.value?.length == 12) {
-            return;
-        } else {
-            const clone = { ...initalValue }
-            const vlaue = e.target.value
-            const name = e.target.name
-            clone[name] = vlaue
-            setInitialValue(clone)
-
-            const verifyMobile = verifiedPhone(initalValue.mobileNo)
-            if (verifyMobile) {
-                isMobileExit(initalValue.mobileNo)
-            }
+        
+        const clone = { ...initalValue }
+        const vlaue = e.target.value
+        const name = e.target.name
+      
+        clone[name] = vlaue
+        if (clone.mobileNo?.length == 13) {
+            return
+         }
+        setInitialValue(clone)
+        if (clone.mobileNo?.length == 12) {
+            isMobileExit(initalValue.mobileNo)
         }
+       
+        const verifyMobile = verifiedPhone(initalValue.mobileNo)
+        // if (verifyMobile) {
+        //     isMobileExit(initalValue.mobileNo)
+        // }
+
     }
 
     const verifiedPhone = (input) => {

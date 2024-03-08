@@ -47,6 +47,7 @@ function SignUpMerchant() {
     }
 
     const verifiedPhone = (input) => {
+        console.log(input);
         const regexMobileNumber = /^[0-9]{10}$/;
         if (input.match(regexMobileNumber)) {
             return true;
@@ -58,7 +59,7 @@ function SignUpMerchant() {
     const isMobileExit = async (value) => {
         try {
             const res = await isMobileExits(value)
-            if (res?.data?.isisExist == true) {
+            if (res?.data?.isisExist === true) {
                 alert('Mobile Exit')
             } else {
             }
@@ -117,7 +118,7 @@ function SignUpMerchant() {
     return (
         <>
             <MerchantLoginHeader />
-            <MerchantLoginAreaBanner title='merchant Create account' />
+            <MerchantLoginAreaBanner title='Merchant Create account' />
             <section className="my-4">
                 <div className="container">
                     <div className="row">

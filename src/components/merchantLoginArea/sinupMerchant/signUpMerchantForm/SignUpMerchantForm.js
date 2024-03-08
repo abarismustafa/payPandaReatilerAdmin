@@ -175,7 +175,7 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
     //     setFormResiter(true)
     //     setEmailVeridedInput(false)
     // }
-
+console.log(data);
 
     return (
         <>

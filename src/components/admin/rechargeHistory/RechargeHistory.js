@@ -1,4 +1,4 @@
-
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function RechargeHistory() {
     return (
         <>
@@ -77,28 +77,34 @@ function RechargeHistory() {
                 </div>
                 <div className="card mt-2" style={{ overflow: 'auto' }}>
                     <div className="card-body">
+                        <ReactHTMLTableToExcel
+                            id="test-table-xls-button"
+                            className="download-table-xls-button cusxel"
+                            table="table-to-xlsx"
+                            filename="tablexls"
+                            sheet="tablexls"
+                            buttonText="Download Excel sheet" />
                         <div className="GridUi no-header-footer-grid" id="all_transaction">
                             <div id="rechargehistorytbl_wrapper" className="dataTables_wrapper">
-                            <div className="d-flex  justify-content-between align-items-center">
-                            <div className="dataTables_length" id="myTable_length">
-                                <label>Show <select name="myTable_length" aria-controls="myTable" className fdprocessedid="srx8j"><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option><option value={100}>100</option></select> entries</label>
-                            </div>
-                                <div className="form-group col-md-2">
-                                    <label >
-                                        Search:
-                                    </label>
-                                    <input className="form-control datefield" id="txtFrom" name="txtFrom" type="text" style={{ cursor: 'pointer' }} />
-                                </div>
-                            </div><table id="rechargehistorytbl" className="table table-striped table-bordered table-hover display fixed_headers dataTable" style={{ width: 1250 }} role="grid" aria-describedby="rechargehistorytbl_info">
-                                <thead>
-                                    <tr role="row"><th className="sorting_asc" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-sort="ascending" aria-label="Sr No: activate to sort column descending">Sr No</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Recharge ID: activate to sort column ascending">Recharge ID</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Txn Id: activate to sort column ascending">Txn Id</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Recharge  DateTime: activate to sort column ascending">Recharge <br /> DateTime</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Company Name: activate to sort column ascending">Company Name</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Mobile No: activate to sort column ascending">Mobile No</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Amount: activate to sort column ascending">Amount</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Debit Amount: activate to sort column ascending">Debit Amount</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Balance: activate to sort column ascending">Balance</th><th className="action_th sorting_disabled" rowSpan={1} colSpan={1} aria-label="Status">Status</th><th className="action_th sorting_disabled" rowSpan={1} colSpan={1} aria-label="Complain">Complain</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr className="odd"><td valign="top" colSpan={11} className="dataTables_empty">No data available in table</td></tr></tbody>
-                                {/* <tfoot>
-                                    <tr><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1}>Total :</th><th rowSpan={1} colSpan={1}>0</th><th rowSpan={1} colSpan={1}>0</th><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /></tr>
-                                </tfoot> */}
-                            </table>
+                                <div className="d-flex  justify-content-between align-items-center">
+                                    <div className="dataTables_length" id="myTable_length">
+                                        <label>Show <select name="myTable_length" aria-controls="myTable" className fdprocessedid="srx8j"><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option><option value={100}>100</option></select> entries</label>
+                                    </div>
+                                    <div className="form-group col-md-2">
+                                        <label >
+                                            Search:
+                                        </label>
+                                        <input className="form-control datefield" id="txtFrom" name="txtFrom" type="text" style={{ cursor: 'pointer' }} />
+                                    </div>
+                                </div><table id="table-to-xlsx" className="table table-striped table-bordered table-hover display fixed_headers dataTable" style={{ width: 1250 }} role="grid" aria-describedby="rechargehistorytbl_info">
+                                    <thead>
+                                        <tr role="row"><th className="sorting_asc" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-sort="ascending" aria-label="Sr No: activate to sort column descending">Sr No</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Recharge ID: activate to sort column ascending">Recharge ID</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Txn Id: activate to sort column ascending">Txn Id</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Recharge  DateTime: activate to sort column ascending">Recharge <br /> DateTime</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Company Name: activate to sort column ascending">Company Name</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Mobile No: activate to sort column ascending">Mobile No</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Amount: activate to sort column ascending">Amount</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Debit Amount: activate to sort column ascending">Debit Amount</th><th className="sorting" tabIndex={0} aria-controls="rechargehistorytbl" rowSpan={1} colSpan={1} aria-label="Balance: activate to sort column ascending">Balance</th><th className="action_th sorting_disabled" rowSpan={1} colSpan={1} aria-label="Status">Status</th><th className="action_th sorting_disabled" rowSpan={1} colSpan={1} aria-label="Complain">Complain</th></tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr className="table-to-xls"><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1}>Total :</th><th rowSpan={1} colSpan={1}>0</th><th rowSpan={1} colSpan={1}>0</th><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /><th rowSpan={1} colSpan={1} /></tr>
+                                    </tbody>
+                                </table>
                                 {/* <div className="dataTables_info" id="rechargehistorytbl_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div>
                                 <div className="dataTables_paginate paging_simple_numbers" id="rechargehistorytbl_paginate"><a className="paginate_button previous disabled" aria-controls="rechargehistorytbl" data-dt-idx={0} tabIndex={0} id="rechargehistorytbl_previous">Previous</a><span /><a className="paginate_button next disabled" aria-controls="rechargehistorytbl" data-dt-idx={1} tabIndex={0} id="rechargehistorytbl_next">Next</a>
                                 </div> */}

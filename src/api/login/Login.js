@@ -3,7 +3,7 @@ import axiosInstance from "../../axiosServiseFactory/AxiosServiseFactory";
 import axios from "axios";
 
 export const userType = (data) => {
-  return axiosInstance.get(`${baseUrl}usertype`);
+  return axiosInstance.get(`${baseUrl}usertype/public/list`);
 };
 
 export const isMobileExits = (value) => {
@@ -32,6 +32,12 @@ export const adharGenerateOtp = (value) => {
 export const subOtp = (value) => {
   return axios.post(`${baseUrl}/verification/adhaar/verify`, value);
 };
+export const personalDetails = (value) => {
+  return axios.post(`${baseUrl}/verification/personalDetails`, value);
+};
+export const GstBusiness = (value) => {
+  return axios.post(`${baseUrl}/verification/gstno`, value);
+};
 
 export const userLogin = (value) => {
   return axiosInstance.post(`${baseUrl}auth/mb/login`, value);
@@ -57,6 +63,16 @@ export const uploadDocument = (value) => {
 export const CountryList = (value) => {
   return axiosInstance.get(`${baseUrl}country/mb/public`);
 };
+
+export const getCountry = (value) => {
+  return axios.get(`${baseUrl}country/mb/public`);
+};
+
+export const getState = (value) => {
+  return axios.get(`${baseUrl}state/mb/public`);
+};
+
+
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

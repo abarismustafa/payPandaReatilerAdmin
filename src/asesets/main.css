@@ -29756,6 +29756,12 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   width: 100%;
 }
 
+.varifyd {
+  font-size: 13px;
+  color: green;
+  font-weight: 600;
+}
+
 .input-group-text-2 {
   padding: 2px !important;
 }

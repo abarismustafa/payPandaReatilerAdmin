@@ -2,13 +2,14 @@ import { Steps } from "antd"
 import MerchantLoginAreaBanner from "../../../common/merchantLoginAreaBanner/MerchantLoginAreaBanner"
 import MerchantLoginHeader from "../../../common/merchantLoginHeader/MerchantLoginHeader"
 import { TopSection } from "../../../components/compeleteRegister/TopSection"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { UploadDoc } from "../../../components/compeleteRegister/UploadDoc"
 import { VedioKyc } from "../../../components/compeleteRegister/VedioKyc"
 import { FirstForm } from "../../../components/compeleteRegister/FirstForm"
 import { SecForm } from "../../../components/compeleteRegister/SecForm"
 import { GstBusinessForm } from "../../../components/compeleteRegister/GstBusinessForm"
 import { BankDetail } from "../../../components/compeleteRegister/BankDetail"
+import { userValidate } from "../../../api/login/Login"
 
 
 
@@ -39,6 +40,18 @@ function CompeleteRegister() {
         }
     ]
     const [state, setState] = useState(0)
+    const [datas, setDatas] = useState()
+    const getVarifyall = async () => {
+        try {
+            const res = await userValidate()
+            setDatas(res.data);
+        } catch (error) {
+
+        }
+    }
+    useEffect(() => {
+        getVarifyall()
+    }, [])
     return (
         <>
             <MerchantLoginHeader />
@@ -51,7 +64,7 @@ function CompeleteRegister() {
                             <Steps current={state} labelPlacement="vertical" items={items} />
                             <div className="firstFor">
 
-                                {state == 0 && <FirstForm setState={setState} />}
+                                {state == 0 && <FirstForm datas={datas} setState={setState} />}
                                 {state == 1 && <SecForm setState={setState} />}
                                 {state == 2 && <GstBusinessForm setState={setState} />}
                                 {state == 3 && <BankDetail setState={setState} />}

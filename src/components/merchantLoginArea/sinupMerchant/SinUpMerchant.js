@@ -25,24 +25,30 @@ function SignUpMerchant() {
 
     const handleChange = (e) => {
 
-        if (e.target.value?.length == 12) {
-            return;
-        } else {
-            const clone = { ...initalValue }
-            const vlaue = e.target.value
-            const name = e.target.name
-            clone[name] = vlaue
-            setInitialValue(clone)
+        const clone = { ...initalValue }
+        const vlaue = e.target.value
+        const name = e.target.name
 
-            const verifyMobile = verifiedPhone(initalValue.mobileNo)
-            if (verifyMobile) {
-                isMobileExit(initalValue.mobileNo)
-            }
+        clone[name] = vlaue
+        if (clone.mobileNo?.length == 14) {
+            return
         }
+        setInitialValue(clone)
+        if (clone.mobileNo?.length == 12) {
+            isMobileExit(initalValue.mobileNo)
+        }
+
+        const verifyMobile = verifiedPhone(initalValue.mobileNo)
+        // if (verifyMobile) {
+        //     isMobileExit(initalValue.mobileNo)
+        // }
+
     }
 
     const handleCountryCode = (e) => {
         setCountryCode(e.target.value);
+        const clone = { ...initalValue, mobileNo: e.target.value }
+        setInitialValue(clone)
 
     }
 
@@ -76,9 +82,9 @@ function SignUpMerchant() {
     };
 
     const mobileGenerateOtpMobile = async () => {
-
+        const clone = { ...initalValue }
         try {
-            const res = await mobileGenerateOtp(initalValue)
+            const res = await mobileGenerateOtp(clone)
             console.log(res?.data);
             setUserID(res?.data?.data?.user);
             if (res?.data?.statusCode == '200') {
@@ -148,6 +154,7 @@ function SignUpMerchant() {
 
                                     handleCountryCode={handleCountryCode}
                                     countryCode={countryCode}
+
                                 />
                             </div>
                         </div>

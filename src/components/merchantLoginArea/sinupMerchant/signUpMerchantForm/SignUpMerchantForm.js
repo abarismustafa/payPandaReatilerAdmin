@@ -11,7 +11,8 @@ import { getUserDetails } from "../../../../utils/localStorage";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile, userID, mobileVeridedInput, getOtp, mobileOtp, emailVeridedInput, emailgetOtp, nextForm, emailOtp, submitOtpEmail, formResiter, setEmailVeridedInput, setMobileOtp, setMobileVerified, handleCountryCode, countryCode }) {
-
+    // console.log(countryCode);
+    // console.log(initalValue.mobileNo.length);
     const navigate = useNavigate()
     const [data, setData] = useState(null)
     const [country, setCountry] = useState(null)
@@ -186,33 +187,31 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
     //     setEmailVeridedInput(false)
     // }
 
-
     return (
         <>
 
             <div className="mt-3">
                 {/* {mobileVeridedInput && } */}
-
                 <>
                     {mobileVeridedInput ? <div className="row">
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1"><FaMobileScreenButton /></span>
-                                <span className="input-group-text input-group-text-2" id="basic-addon1" value={countryCode} onChange={handleCountryCode}>
-                                    <select class="form-select" aria-label="Default select example">
+                                <span className="input-group-text input-group-text-2" id="basic-addon1" >
+                                    <select class="form-select" aria-label="Default select example" value={countryCode} onChange={handleCountryCode}>
                                         <option selected>select Country</option>
                                         {country && country?.map((item) => {
                                             return <option >{item?.code}</option>
                                         })}
                                     </select>
                                 </span>
-                                <input type="number" className="form-control" placeholder="Enter Mobile Number" name="mobileNo" value={initalValue.mobileNo} onChange={handleChange} />
+                                <input type="text" className="form-control" placeholder="Enter Mobile Number" name="mobileNo" value={initalValue.mobileNo} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 {/* <span className="input-group-text" id="basic-addon1"><TiTick /></span> */}
-                                <button type="button" className="form-control btn btn-login" onClick={getOtp}>Get OTP</button>
+                                <button type="button" disabled={initalValue.mobileNo.length == 13 ? false : true} className="form-control btn btn-login" onClick={getOtp}>Get OTP</button>
                             </div>
                         </div>
                     </div> : <></>
@@ -230,7 +229,7 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 {/* <span className="input-group-text" id="basic-addon1"><TiTick /></span> */}
-                                <button type="button" className="form-control btn btn-login" onClick={submitOtp}>Submit OTP</button>
+                                <button type="button" className="form-control btn btn-login" disabled={otp.otp.length == 6 ? false : true} onClick={submitOtp}>Submit OTP</button>
                             </div>
                         </div> </> : <></>}
                 </>

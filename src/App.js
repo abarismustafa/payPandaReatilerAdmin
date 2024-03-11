@@ -78,6 +78,9 @@ import MerchantLoginAreaPage from './pages/merchantLoginArea/Index';
 import SinUpMerchantPage from './pages/merchantLoginArea/sinupMerchant';
 import CompeleteRegister from './pages/merchantLoginArea/compeleteRegister';
 import "react-toastify/dist/ReactToastify.css";
+import Shipping_Address from './pages/admin/shipping_Address';
+import FormBillAdd from './pages/admin/shipping_Address/FormBillAdd';
+import BillingAddress from './pages/admin/billingAddress';
 function App() {
   const [isLogin, setislogin] = useState(window.localStorage.getItem('login'))
 
@@ -153,6 +156,10 @@ function App() {
 
           {/* <Route path="" element={<ServiceParent />} ></Route> */}
           <Route path='change_password' element={<PasswordChagePage />} />
+          <Route path='shipping_Address' element={<Shipping_Address/>} />
+          <Route path='billing_Address' element={<BillingAddress/>} />
+          <Route path='shipping_AddressaForm' element={<FormBillAdd ship={'Shipping'} type='shipping'/>} />
+          <Route path='billing_AddressaForm' element={<FormBillAdd ship={'billing'} type='billing'/>} />
           <Route path='change_txnpassword' element={<CreatePinPage />} />
           <Route path='Retailer_authentication' element={<OtpSecurityPage />} />
           <Route path='tds_certificate' element={<TdsCertificatePage />} />

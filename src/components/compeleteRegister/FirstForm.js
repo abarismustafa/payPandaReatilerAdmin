@@ -5,9 +5,14 @@ import { FaCheck } from "react-icons/fa";
 
 export const FirstForm = ({ setState, datas }) => {
     const [pannum, setpannum] = useState()
+   
     const [aharnum, setaharnum] = useState()
     useEffect(() => {
         setpannum(datas?.pan_number)
+        console.log(datas?.isIdentity_verified);
+        if (datas?.isIdentity_verified) {
+            setState(1)
+        }
     }, [datas])
 
     const [OtpAdhar, setOtpAdhar] = useState()
@@ -36,13 +41,14 @@ export const FirstForm = ({ setState, datas }) => {
         try {
             const res = await adharGenerateOtp({ adhaarNumber: aharnum, user_id: window.localStorage.getItem('userToken') })
             setloader2(false)
-            console.log(res.data.data.ref_id);
-            window.localStorage.setItem('ref_id',res.data.data.ref_id)
-            toastSuccessMessage('Adhar Otp Send Successfully')
-            window.localStorage.setItem('ref_id', res.data)
-            setTimeout(() => {
-                setadharOtpGet(true)
-            }, 1000);
+            if (res?.data?.statusCode == 200) {
+                window.localStorage.setItem('ref_id', res.data.data.ref_id)
+                toastSuccessMessage('Adhar Otp Send Successfully')
+                setTimeout(() => {
+                    setadharOtpGet(true)
+                }, 1000);
+            }
+
         } catch (error) {
             setloader2(false)
         }
@@ -58,6 +64,8 @@ export const FirstForm = ({ setState, datas }) => {
                 setTimeout(() => {
                     setState(1)
                 }, 1000);
+            }else{
+                alert(res?.data?.message)
             }
 
         } catch (error) {
@@ -71,6 +79,8 @@ export const FirstForm = ({ setState, datas }) => {
             <label for="exampleInputEmail1" className="form-label">Enter Pan Number {datas?.pan_number && <span className="varifyd">Pan Varified <FaCheck /></span>}</label>
             <div id="emailHelp" className="form-text">Enter your pan number. Pan number should belong to individual</div>
             <input type="text" value={pannum} onChange={(e) => { setpannum(e.target.value) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+
+            {datas?.pan_number && <div id="emailHelp" className="form-text">Name : {datas?.pan_name}</div>}
             <button type="button" onClick={submitPanNumber} style={{ backgroundColor: '#2E3191', margin: "6px 0" }} disabled={!pannum ? true : false} className="btn btn-primary">Verify Pan {loader && <div style={{ height: "16px", width: "16px" }} className="spinner-border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </div>}</button>

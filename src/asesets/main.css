@@ -29723,10 +29723,12 @@ aside.SidebarMain .MenuItem .SubmenuItems ul li a::before {
   font-size: 19px;
   left: 17px;
 }
-.ant-upload{
-width: 100% !important;
+
+.ant-upload {
+  width: 100% !important;
 }
-.kycCall{
+
+.kycCall {
   width: 280px;
   height: 170px;
   border: 2px solid #8BC540;
@@ -29737,22 +29739,31 @@ width: 100% !important;
   justify-content: center;
   cursor: pointer;
 }
-.kycicon{
+
+.kycicon {
   font-size: 55px;
 }
-.perakyc{
+
+.perakyc {
   width: 416px;
   margin: auto;
   display: flex;
   text-align: center;
   font-size: 19px;
 }
+
 .mainant>span>div>div {
   width: 100%;
 }
 
-.varifyd{
-font-size: 13px;
-    color: green;
-    font-weight: 600;
+.varifyd {
+  font-size: 13px;
+  color: green;
+  font-weight: 600;
+}
+
+.laste {
+  font-size: 17px;
+  margin-top: 7px;
+  margin-bottom: 15px;
 }

@@ -1,5 +1,5 @@
-const token = window.localStorage.getItem("userToken");
 const requestMiddleWare = (config) => {
+  const token = window.localStorage.getItem("userToken");
   const headers = {
     "content-type": "application/json; charset=UTF-8",
     authorization: `Bearer ${token}`,

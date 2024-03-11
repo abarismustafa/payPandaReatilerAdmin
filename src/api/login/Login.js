@@ -70,7 +70,12 @@ export const getState = (value) => {
   return axios.get(`${baseUrl}state/mb/public`);
 };
 
-
+export const declarationSub = (value) => {
+  return axios.post(`${baseUrl}verification/docSave`, value);
+};
+export const sendShipping = (value) => {
+  return axios.post(`${baseUrl}user/register/billAddress`, value);
+};
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

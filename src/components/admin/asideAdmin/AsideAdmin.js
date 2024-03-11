@@ -230,6 +230,13 @@ function AsideAdmin({ isActive }) {
                         <div id="collapseSettings" className={`SubmenuItems collapse ${setting ? "mm-show" : "extra"}`} aria-labelledby="headingSettings" data-parent="#accordion">
                             <ul>
                                 <li>
+                                    <Link to="shipping_Address">Shipping Address</Link>
+                                </li>
+                                <li>
+                                    <Link to="billing_Address">Billing Address</Link>
+                                </li>
+
+                                <li>
                                     <Link to="change_password">Password Change</Link>
                                 </li>
                                 <li>
@@ -240,7 +247,7 @@ function AsideAdmin({ isActive }) {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div>
                     <div className="MenuItem ">
                         <div className="card-header">
                             <Link to="aesp-device-drivers">

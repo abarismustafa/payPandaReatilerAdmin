@@ -10,6 +10,7 @@ import { SecForm } from "../../../components/compeleteRegister/SecForm"
 import { GstBusinessForm } from "../../../components/compeleteRegister/GstBusinessForm"
 import { BankDetail } from "../../../components/compeleteRegister/BankDetail"
 import { userValidate } from "../../../api/login/Login"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -41,10 +42,26 @@ function CompeleteRegister() {
     ]
     const [state, setState] = useState(0)
     const [datas, setDatas] = useState()
+    const navigate = useNavigate()
     const getVarifyall = async () => {
         try {
             const res = await userValidate()
             setDatas(res.data);
+            if (res.data?.is_personalDetails) {
+                setState(2)
+            }
+            if (res.data?.is_gst) {
+                setState(3)
+            }
+            if (res.data?.is_bank) {
+                setState(4)
+            }
+            if (res.data?.is_document) {
+                setState(5)
+            }
+            if (res.data?.is_approved) {
+                navigate('/admin')
+            }
         } catch (error) {
 
         }

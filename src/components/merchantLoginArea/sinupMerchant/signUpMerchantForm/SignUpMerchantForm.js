@@ -143,7 +143,7 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
                     setMobileVerified(false)
                 }, 2000)
             }
-            console.log(res);
+            // console.log(res);
         } catch (error) {
 
         }

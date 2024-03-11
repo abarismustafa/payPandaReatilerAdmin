@@ -7,7 +7,12 @@ export const GstBusinessForm = ({ setState }) => {
     const [data, setData] = useState({
         isGstAvailable: true,
         GSTIN: '',
-        businessName: ''
+        businessName: '',
+        shop_name: '',
+        business_pincode: '',
+        business_city: '',
+        business_Address: '',
+        gst_register_type: ''
     })
     const [loader3, setloader3] = useState(false)
     const onChangeHandle = (e) => {
@@ -42,7 +47,7 @@ export const GstBusinessForm = ({ setState }) => {
     }
 
     return <div className="container">
-             <ToastContainer />
+        <ToastContainer />
         <div className="row">
             <h6 style={{ textAlign: "center", margin: "14px 0" }}>Are you Register for Gst</h6>
             <div className="d-flex" style={{ justifyContent: "center", margin: "10px 0 " }}>
@@ -62,6 +67,10 @@ export const GstBusinessForm = ({ setState }) => {
         </div>
         <form className="row">
             <div className="col-6 mb-3 clrelative">
+                <input type="text" className="form-control" onChange={onChangeHandle} name='shop_name' id="exampleInputEmail1" placeholder="Enter Shop Name" aria-describedby="emailHelp" />
+                <IoLocationOutline className="clApsulute" />
+            </div>
+            <div className="col-6 mb-3 clrelative">
                 <input type="text" className="form-control" onChange={onChangeHandle} name='GSTIN' id="exampleInputEmail1" placeholder="Enter GST provisional GST number" aria-describedby="emailHelp" />
                 <IoLocationOutline className="clApsulute" />
             </div>
@@ -69,9 +78,22 @@ export const GstBusinessForm = ({ setState }) => {
                 <input type="text" className="form-control" onChange={onChangeHandle} name='businessName' id="exampleInputEmail1" placeholder="Enter business GST Name" aria-describedby="emailHelp" />
                 <IoLocationOutline className="clApsulute" />
             </div>
-
-
-
+            <div className="col-6 mb-3 clrelative">
+                <input type="text" className="form-control" onChange={onChangeHandle} name='business_city' id="exampleInputEmail1" placeholder="Enter Business City" aria-describedby="emailHelp" />
+                <IoLocationOutline className="clApsulute" />
+            </div>
+            <div className="col-6 mb-3 clrelative">
+                <input type="text" className="form-control" onChange={onChangeHandle} name='business_Address' id="exampleInputEmail1" placeholder="Business Address" aria-describedby="emailHelp" />
+                <IoLocationOutline className="clApsulute" />
+            </div>
+            <div className="col-6 mb-3 clrelative">
+                <input type="text" className="form-control" onChange={onChangeHandle} name='gst_register_type' id="exampleInputEmail1" placeholder="Enter Gst Register Type" aria-describedby="emailHelp" />
+                <IoLocationOutline className="clApsulute" />
+            </div>
+            <div className="col-6 mb-3 clrelative">
+                <input type="text" className="form-control" onChange={onChangeHandle} name='business_pincode' id="exampleInputEmail1" placeholder="Enter business_pincode" aria-describedby="emailHelp" />
+                <IoLocationOutline className="clApsulute" />
+            </div>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-between'

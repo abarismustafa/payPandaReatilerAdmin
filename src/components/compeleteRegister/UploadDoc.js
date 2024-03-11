@@ -149,6 +149,9 @@ export const UploadDoc = ({ setState }) => {
       console.log(res);
       if (res?.data?.statusCode == '200') {
         toastSuccessMessage('Document Upload Successfull')
+        setTimeout(() => {
+          setState(3)
+        }, 1000);
       }
     } catch (error) {
 

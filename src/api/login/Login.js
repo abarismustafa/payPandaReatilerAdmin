@@ -2,6 +2,8 @@ import { baseUrl } from "../../baseUrl";
 import axiosInstance from "../../axiosServiseFactory/AxiosServiseFactory";
 import axios from "axios";
 
+const token = window.localStorage.getItem("userIdToken")
+
 export const userType = (data) => {
   return axiosInstance.get(`${baseUrl}usertype/public/list`);
 };
@@ -71,6 +73,32 @@ export const getCountry = (value) => {
 export const getState = (value) => {
   return axios.get(`${baseUrl}state/mb/public`);
 };
+
+export const declarationSub = (value) => {
+  return axios.post(`${baseUrl}verification/docSave`, value);
+};
+export const sendShipping = (value) => {
+  return axios.post(`${baseUrl}user/register/billAddress`, value);
+};
+// profileUpdate
+
+export const updateProfilee = (value) => {
+  return axios.put(`${baseUrl}auth/mb/update/profile`, value);
+};
+
+export const countryGet = (value) => {
+  return axios.get(`${baseUrl}country/mb/public`);
+};
+export const languageGet = () => {
+  return axios.get(`${baseUrl}language/lang/list`);
+};
+export const Getprofile = () => {
+  return axios.get(`${baseUrl}auth/mb/get/profile`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
+
+// profileUpdate
 
 
 

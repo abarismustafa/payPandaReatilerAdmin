@@ -74,8 +74,49 @@ export const declarationSub = (value) => {
   return axios.post(`${baseUrl}verification/docSave`, value);
 };
 export const sendShipping = (value) => {
-  return axios.post(`${baseUrl}user/register/billAddress`, value);
+  return axios.post(`${baseUrl}deliveryaddress/user/addDeliveryaddress`, value);
 };
+
+export const sendShippingUpdate = ({value ,id}) => {
+  return axios.put(`${baseUrl}deliveryaddress/user/updatedeliveryaddress/${id}`, value);
+};
+
+export const getShippingAddress = (value) => {
+  return axios.get(`${baseUrl}deliveryaddress/user/shipping`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+export const getShippingAddressById = (id) => {
+  return axios.get(`${baseUrl}deliveryaddress/user/detail/${id}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+export const getShippingAddressDelete = (id) => {
+  return axios.delete(`${baseUrl}deliveryaddress/user/deletedeliveryaddress/${id}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+
+export const getBillingAddress = (value) => {
+  return axios.get(`${baseUrl}deliveryaddress/user/billing`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
 
 // export const currencyAdd = (data) => {
 //   return axiosInstance.post(`${baseUrl}currency/addcurrency`, data);

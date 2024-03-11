@@ -158,8 +158,10 @@ function App() {
           <Route path='change_password' element={<PasswordChagePage />} />
           <Route path='shipping_Address' element={<Shipping_Address/>} />
           <Route path='billing_Address' element={<BillingAddress/>} />
-          <Route path='shipping_AddressaForm' element={<FormBillAdd ship={'Shipping'} type='shipping'/>} />
-          <Route path='billing_AddressaForm' element={<FormBillAdd ship={'billing'} type='billing'/>} />
+          <Route path='shipping_AddressaForm' element={<FormBillAdd ship={'Shipping'} type='Shipping'/>} />
+          <Route path='/admin/shipping_AddressaForm/:id' element={<FormBillAdd ship={'Shipping'} type='Shipping'/>} />
+          <Route path='billing_AddressaForm' element={<FormBillAdd ship={'billing'} type='Billing'/>} />
+          <Route path='/admin/billing_AddressaForm/:id' element={<FormBillAdd ship={'billing'} type='Billing'/>} />
           <Route path='change_txnpassword' element={<CreatePinPage />} />
           <Route path='Retailer_authentication' element={<OtpSecurityPage />} />
           <Route path='tds_certificate' element={<TdsCertificatePage />} />

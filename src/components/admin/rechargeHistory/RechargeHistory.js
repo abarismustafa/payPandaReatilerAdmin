@@ -6,15 +6,15 @@ function RechargeHistory() {
                 <div className="card">
                     <div className="card-header">
                         <span>Filter</span>
-                        <div className="float-right mt-2">
+                        {/* <div className="float-right mt-2">
                             <button className="btn btn-success mr-2" type="button" id="all-success" fdprocessedid="guzzp">Success : 0</button>
                             <button className="btn btn-warning mr-2" type="button" id="all-pending" fdprocessedid="5z6v5">Pending : 0</button>
                             <button className="btn btn-danger mr-2" type="button" id="all-failure" fdprocessedid="n4v2pr">Failure : 0</button>
                             <button className="btn btn-info" type="button" id="all-commission" fdprocessedid="df961n">Commission : 0</button>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="card-body">
-                        <form action="https://m.masterpay.pro/Retailer/recharge_history " method="post" name="frmCallAction" id="frmCallAction">
+                        <form action="# " method="post" name="frmCallAction" id="frmCallAction">
                             <input type="hidden" id="hidID" name="hidID" />
                             <div className="form-row">
                                 <div className="form-group col-md-2">
@@ -65,15 +65,12 @@ function RechargeHistory() {
                             <div className="form-row">
                                 <input type="submit" id="btnSearch" name="btnSearch" defaultValue="Search" className="btn btn-primary" />
                                 &nbsp; &nbsp; <input type="button" id="btnExport" name="btnExport" defaultValue="Export" className="btn btn-secondary" />
-                                &nbsp; &nbsp; <button className="btn btn-primary" type="button" fdprocessedid="vvjlzh">Live Data Date :
-                                    2023-11-22                  </button>
+                                {/* &nbsp; &nbsp;
+                                <button className="btn btn-primary" type="button" fdprocessedid="vvjlzh">Live Data Date :
+                                    2023-11-22                  </button> */}
                             </div>
                         </form></div>
-                    <form id="frmcomplain" method="post">
-                        <input type="hidden" id="hidrecid" name="hidrecid" />
-                        <input type="hidden" id="hidmsg" name="hidmsg" />
-                        <input type="hidden" id="hidmsgtext" name="hidmsgtext" />
-                    </form>
+
                 </div>
                 <div className="card mt-2" style={{ overflow: 'auto' }}>
                     <div className="card-body">
@@ -88,7 +85,14 @@ function RechargeHistory() {
                             <div id="rechargehistorytbl_wrapper" className="dataTables_wrapper">
                                 <div className="d-flex  justify-content-between align-items-center">
                                     <div className="dataTables_length" id="myTable_length">
-                                        <label>Show <select name="myTable_length" aria-controls="myTable" className fdprocessedid="srx8j"><option value={10}>10</option><option value={25}>25</option><option value={50}>50</option><option value={100}>100</option></select> entries</label>
+                                        <label>Show <select name="myTable_length" >
+                                            <option value={10}>10</option>
+                                            <option value={25}>25</option>
+                                            <option value={50}>50</option>
+                                            <option value={100}>100</option>
+                                        </select>
+                                            entries
+                                        </label>
                                     </div>
                                     <div className="form-group col-md-2">
                                         <label >

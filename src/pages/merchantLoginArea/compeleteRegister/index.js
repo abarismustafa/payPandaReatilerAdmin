@@ -47,19 +47,19 @@ function CompeleteRegister() {
         try {
             const res = await userValidate()
             setDatas(res.data);
-            if(res.data?.is_personalDetails){
+            if (res.data?.is_personalDetails) {
                 setState(2)
             }
-            if(res.data?.is_gst){
+            if (res.data?.is_gst) {
                 setState(3)
             }
-            if(res.data?.is_bank){
+            if (res.data?.is_bank) {
                 setState(4)
             }
-            if(res.data?.is_document){
+            if (res.data?.is_document) {
                 setState(5)
             }
-            if(res.data?.is_approved){
+            if (res.data?.is_approved) {
                 navigate('/admin')
             }
         } catch (error) {
@@ -80,7 +80,6 @@ function CompeleteRegister() {
                             <TopSection />
                             <Steps current={state} labelPlacement="vertical" items={items} />
                             <div className="firstFor">
-
                                 {state == 0 && <FirstForm datas={datas} setState={setState} />}
                                 {state == 1 && <SecForm setState={setState} />}
                                 {state == 2 && <GstBusinessForm setState={setState} />}

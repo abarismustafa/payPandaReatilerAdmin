@@ -14,27 +14,30 @@ function SignUpMerchant() {
     const [emailOtp, setEmailOtp] = useState(false)
     const [formResiter, setFormResiter] = useState(false)
 
+    const [countryCode, setCountryCode] = useState()
+    // console.log(countryCode);
+
     const [userID, setUserID] = useState()
 
     const [initalValue, setInitialValue] = useState({
-        mobileNo: '91',
+        mobileNo: '',
     })
 
     const handleChange = (e) => {
-        
+
         const clone = { ...initalValue }
         const vlaue = e.target.value
         const name = e.target.name
-      
+
         clone[name] = vlaue
-        if (clone.mobileNo?.length == 13) {
+        if (clone.mobileNo?.length == 14) {
             return
-         }
+        }
         setInitialValue(clone)
         if (clone.mobileNo?.length == 12) {
             isMobileExit(initalValue.mobileNo)
         }
-       
+
         const verifyMobile = verifiedPhone(initalValue.mobileNo)
         // if (verifyMobile) {
         //     isMobileExit(initalValue.mobileNo)
@@ -42,7 +45,15 @@ function SignUpMerchant() {
 
     }
 
+    const handleCountryCode = (e) => {
+        setCountryCode(e.target.value);
+        const clone = { ...initalValue, mobileNo: e.target.value }
+        setInitialValue(clone)
+
+    }
+
     const verifiedPhone = (input) => {
+        console.log(input);
         const regexMobileNumber = /^[0-9]{10}$/;
         if (input.match(regexMobileNumber)) {
             return true;
@@ -54,7 +65,7 @@ function SignUpMerchant() {
     const isMobileExit = async (value) => {
         try {
             const res = await isMobileExits(value)
-            if (res?.data?.isisExist == true) {
+            if (res?.data?.isisExist === true) {
                 alert('Mobile Exit')
             } else {
             }
@@ -71,9 +82,9 @@ function SignUpMerchant() {
     };
 
     const mobileGenerateOtpMobile = async () => {
-
+        const clone = { ...initalValue }
         try {
-            const res = await mobileGenerateOtp(initalValue)
+            const res = await mobileGenerateOtp(clone)
             console.log(res?.data);
             setUserID(res?.data?.data?.user);
             if (res?.data?.statusCode == '200') {
@@ -113,7 +124,7 @@ function SignUpMerchant() {
     return (
         <>
             <MerchantLoginHeader />
-            <MerchantLoginAreaBanner title='merchant Create account' />
+            <MerchantLoginAreaBanner title='Merchant Create account' />
             <section className="my-4">
                 <div className="container">
                     <div className="row">
@@ -140,6 +151,10 @@ function SignUpMerchant() {
                                     handleChange={handleChange}
                                     mobileGenerateOtpMobile={mobileGenerateOtpMobile}
                                     userID={userID}
+
+                                    handleCountryCode={handleCountryCode}
+                                    countryCode={countryCode}
+
                                 />
                             </div>
                         </div>

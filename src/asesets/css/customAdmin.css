@@ -116,6 +116,22 @@ textarea {
         width: 135px !important;
         font-size: 11px
     }
+
+    aside.SidebarMain {
+        transition: 0.2s linear;
+    }
+
+    aside.hide-sidebar {
+        margin-left: -220px;
+
+    }
+
+    header.HeaderMain .logo img {
+        /* width: 215px; */
+        width: 15rem;
+        height: 100%;
+        /* background: #1e5591; */
+    }
 }
 
 ::-webkit-scrollbar {
@@ -1464,4 +1480,9 @@ div.DialogMask {
     border: 1px solid #d40b2e;
     background-color: #ffffff;
     color: #d40b2e;
+}
+
+.alert-2 {
+    width: 100%;
+    text-align: center;
 }

@@ -6,18 +6,21 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { TiTick } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import TabSignUp from "../tabSinUp/TabSignUp";
-import { isVerifiedMobileOtp, registerUser, userType } from "../../../../api/login/Login";
+import { CountryList, isVerifiedMobileOtp, registerUser, userType } from "../../../../api/login/Login";
 import { getUserDetails } from "../../../../utils/localStorage";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile, userID, mobileVeridedInput, getOtp, mobileOtp, emailVeridedInput, emailgetOtp, nextForm, emailOtp, submitOtpEmail, formResiter, setEmailVeridedInput, setMobileOtp, setMobileVerified }) {
-
+function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile, userID, mobileVeridedInput, getOtp, mobileOtp, emailVeridedInput, emailgetOtp, nextForm, emailOtp, submitOtpEmail, formResiter, setEmailVeridedInput, setMobileOtp, setMobileVerified, handleCountryCode, countryCode }) {
+    // console.log(countryCode);
+    // console.log(initalValue.mobileNo.length);
     const navigate = useNavigate()
     const [data, setData] = useState(null)
+    const [country, setCountry] = useState(null)
+    // console.log(country);
 
     const [userId, setUserId] = useState()
     const [mobileId, setMobile] = useState()
-    // console.log(userId);
+    console.log(mobileId);
 
 
     const [errorValue, setErrorValue] = useState({})
@@ -35,8 +38,24 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
         mobile: mobileId,
         user_type_id: "65e2f15785bfd78f9866c090",
         name: '',
-        password: ''
+        password: '',
+        refer_id: ''
     })
+
+    const countryget = async () => {
+        try {
+            const res = await CountryList()
+            setCountry(res?.data)
+        } catch (error) {
+
+        }
+
+    }
+    useEffect(() => {
+        countryget()
+    }, [])
+
+
 
     const validation = (values) => {
         const error = {}
@@ -55,8 +74,6 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
             error.password = "Password is Required!"
 
         }
-
-
         return error
 
     }
@@ -67,12 +84,6 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
         const name = e.target.name
         clone[name] = vlaue
         setOtp(clone)
-
-        // const verifyMobile = verifiedPhone(initalValue.mobileNo)
-        // if (verifyMobile) {
-        //     isMobileExit(initalValue.mobileNo)
-        // }
-
     }
 
     const handleResiter = (e) => {
@@ -84,7 +95,6 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
     }
 
     const toastSuccessMessage = (message) => {
-        console.log(message);
         toast.success(`${message}`, {
             position: "top-center",
         });
@@ -120,7 +130,7 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
         // debugger
         try {
             const res = await isVerifiedMobileOtp({ ...otp, user_id: userID })
-            console.log(res?.data);
+            console.log(res?.data?.data.user);
             setMobile(res?.data?.data?.user);
             if (res?.status == '200') {
                 getUserDetails(res?.data?.user)
@@ -132,7 +142,7 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
                     setMobileVerified(false)
                 }, 2000)
             }
-            console.log(res);
+            // console.log(res);
         } catch (error) {
 
         }
@@ -175,26 +185,32 @@ function SignUpMerchantForm({ initalValue, handleChange, mobileGenerateOtpMobile
     //     setFormResiter(true)
     //     setEmailVeridedInput(false)
     // }
-console.log(data);
 
     return (
         <>
 
             <div className="mt-3">
                 {/* {mobileVeridedInput && } */}
-
                 <>
                     {mobileVeridedInput ? <div className="row">
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="basic-addon1"><FaMobileScreenButton /></span>
-                                <input type="number" className="form-control" placeholder="Enter Mobile Number" name="mobileNo" value={initalValue.mobileNo} onChange={handleChange} />
+                                <span className="input-group-text input-group-text-2" id="basic-addon1" >
+                                    <select class="form-select" aria-label="Default select example" value={countryCode} onChange={handleCountryCode}>
+                                        <option selected>select Country</option>
+                                        {country && country?.map((item) => {
+                                            return <option value={'+' + item?.phone_code}>{item?.name}</option>
+                                        })}
+                                    </select>
+                                </span>
+                                <input type="text" className="form-control" placeholder="Enter Mobile Number" name="mobileNo" value={initalValue.mobileNo} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 {/* <span className="input-group-text" id="basic-addon1"><TiTick /></span> */}
-                                <button type="button" className="form-control btn btn-login" onClick={getOtp}>Get OTP</button>
+                                <button type="button" disabled={initalValue.mobileNo.length == 13 ? false : true} className="form-control btn btn-login" onClick={getOtp}>Get OTP</button>
                             </div>
                         </div>
                     </div> : <></>
@@ -212,7 +228,7 @@ console.log(data);
                         <div className="col-lg-12">
                             <div className="input-group mb-3">
                                 {/* <span className="input-group-text" id="basic-addon1"><TiTick /></span> */}
-                                <button type="button" className="form-control btn btn-login" onClick={submitOtp}>Submit OTP</button>
+                                <button type="button" className="form-control btn btn-login" disabled={otp.otp.length == 6 ? false : true} onClick={submitOtp}>Submit OTP</button>
                             </div>
                         </div> </> : <></>}
                 </>
@@ -255,7 +271,7 @@ console.log(data);
 
 
                 {formResiter ? <TabSignUp data={data} count={count} tabChange={tabChange} /> : <></>}
-                {formResiter ? <form onSubmit={handleSubmit}>
+                {formResiter ? <form >
                     <div className="row">
                         <div className="col-lg-6 mb-3">
                             <div className="input-group mb-1">
@@ -284,12 +300,12 @@ console.log(data);
                                 {errorValue.name}
                             </p>
                         </div>
-                        {/* <div className="col-lg-6">
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" id="basic-addon1"><FaRegUser /></span>
-                                <input type="text" className="form-control" placeholder="Refer Code" />
+                        <div className="col-lg-6 mb-3">
+                            <div className="input-group mb-1">
+                                <span className="input-group-text" id="basic-addon1"><RiLockPasswordFill /></span>
+                                <input type="text" className="form-control" placeholder="Enter Refer id" name="refer_id" value={resiter.refer_id} onChange={handleResiter} />
                             </div>
-                        </div> */}
+                        </div>
                         <div>
                             <button type="button" disabled={!resiter.name || !resiter.email || !resiter.password} className="btn btn-login" onClick={handleSubmit}>REGISTER</button>
                         </div>

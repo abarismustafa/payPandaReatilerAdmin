@@ -3,20 +3,28 @@ import { Link, useNavigate } from "react-router-dom"
 
 
 
-function AsideAdmin({ isActive }) {
+function AsideAdmin({ isActive, overlayClick }) {
     // console.log(isActive);
     const navigate = useNavigate()
     const [report, setReport] = useState(false)
+    const [payment, setPayment] = useState(false)
     const [setting, setSetting] = useState(false)
     const logoutPage = () => {
         window.localStorage.setItem('login', false)
         navigate('/home')
         window.location.reload()
+    }
 
+
+    const logOut = () => {
+        window.localStorage.removeItem('userToken')
+        window.localStorage.removeItem('userIdToken')
+        // window.location.reload()
+        navigate('/login-area')
     }
     return (
         <>
-            <aside className={`SidebarMain mCustomScrollbar _mCS_1 mCS-autoHide ${isActive ? 'hide-sidebar' : ''}`} id="accordion" style={{}}>
+            <aside className={`SidebarMain mCustomScrollbar _mCS_1 mCS-autoHide ${isActive ? 'hide-sidebar' : ''}`} id="aside" style={{}}>
                 {/* className="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" */}
                 <div id="mCSB_1" className="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" style={{ maxHeight: 'none' }} tabIndex={0}><div id="mCSB_1_container" className="mCSB_container" style={{ position: 'relative', top: 0, left: 0 }} dir="ltr">
                     <div className="MenuItem active">
@@ -105,6 +113,9 @@ function AsideAdmin({ isActive }) {
                         <div id="collapseOne" className={`SubmenuItems collapse ${report ? "mm-show" : "extra"}`} >
                             <ul>
                                 <li>
+                                    <Link to="wallet-report">Wallet Report</Link>
+                                </li>
+                                <li>
                                     <Link to="recharge_history">Recharge Report</Link>
                                 </li><li>
                                     <Link to="search_recharge_history">Search Recharge Transaction</Link>
@@ -181,6 +192,8 @@ function AsideAdmin({ isActive }) {
                       <li >
                           <a href="https://m.masterpay.pro/Retailer/aadhaarpay_fingpay_report">Aadhaar Pay Report</a>
                       </li> */}
+
+
                                 <li>
                                     <Link to="postpaid_bill_transaction">Postpaid bill Transction</Link>
                                 </li>
@@ -195,6 +208,33 @@ function AsideAdmin({ isActive }) {
                                 </li>
                                 <li>
                                     <Link to="Aquapay_gift_cards_report">Rupay Gift Card Transaction Report</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="MenuItem ">
+                        <div className="card-header collapsed" id="headingSettings" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
+                            <Link href="#" onClick={() => { setPayment(!payment) }}>
+                                <i>
+                                    <svg x={0} y={0} viewBox="0 0 16 16" className="sm-svg default-svg">
+                                        <path d="M15.920,7.112 C15.895,6.887 15.633,6.718 15.407,6.718 C14.675,6.718 14.026,6.287 13.753,5.621 C13.475,4.940 13.655,4.144 14.200,3.643 C14.372,3.486 14.392,3.223 14.248,3.040 C13.874,2.564 13.448,2.133 12.983,1.760 C12.801,1.614 12.534,1.634 12.377,1.809 C11.901,2.337 11.046,2.534 10.385,2.257 C9.698,1.968 9.264,1.270 9.307,0.521 C9.320,0.285 9.149,0.081 8.915,0.053 C8.318,-0.016 7.716,-0.018 7.118,0.048 C6.887,0.074 6.715,0.274 6.723,0.506 C6.749,1.248 6.310,1.934 5.629,2.213 C4.977,2.480 4.128,2.286 3.653,1.762 C3.496,1.590 3.233,1.569 3.050,1.711 C2.572,2.088 2.136,2.518 1.758,2.991 C1.611,3.175 1.633,3.441 1.806,3.599 C2.362,4.103 2.541,4.905 2.253,5.595 C1.977,6.253 1.295,6.676 0.515,6.676 C0.262,6.668 0.082,6.839 0.054,7.069 C-0.016,7.670 -0.017,8.283 0.050,8.889 C0.076,9.114 0.345,9.282 0.574,9.282 C1.269,9.264 1.937,9.695 2.217,10.378 C2.496,11.060 2.317,11.855 1.770,12.356 C1.600,12.514 1.578,12.776 1.722,12.959 C2.093,13.433 2.519,13.863 2.985,14.240 C3.168,14.387 3.434,14.367 3.593,14.191 C4.071,13.662 4.926,13.466 5.584,13.743 C6.273,14.032 6.706,14.730 6.664,15.479 C6.650,15.715 6.823,15.920 7.056,15.946 C7.361,15.982 7.668,16.000 7.976,16.000 C8.268,16.000 8.560,15.984 8.852,15.951 C9.084,15.926 9.255,15.726 9.248,15.493 C9.221,14.752 9.660,14.066 10.340,13.787 C10.997,13.518 11.843,13.715 12.318,14.238 C12.475,14.410 12.736,14.431 12.920,14.288 C13.398,13.913 13.832,13.483 14.212,13.009 C14.359,12.825 14.339,12.559 14.164,12.401 C13.609,11.897 13.428,11.094 13.717,10.405 C13.988,9.756 14.645,9.321 15.351,9.321 L15.449,9.323 C15.678,9.342 15.889,9.165 15.917,8.931 C15.987,8.329 15.988,7.718 15.920,7.112 ZM7.998,10.685 C6.529,10.685 5.335,9.488 5.335,8.017 C5.335,6.545 6.529,5.348 7.998,5.348 C9.467,5.348 10.661,6.545 10.661,8.017 C10.661,9.488 9.467,10.685 7.998,10.685 Z" />
+                                    </svg>
+                                </i>
+                                <span>Payments</span>
+                                <i className="ic">
+                                    <svg x={0} y={0} viewBox="0 0 7 11">
+                                        <path d="M6.783,6.060 L2.231,10.803 C1.941,11.104 1.472,11.104 1.182,10.803 C0.893,10.501 0.893,10.012 1.182,9.710 L5.210,5.514 L1.182,1.317 C0.893,1.015 0.893,0.526 1.182,0.224 C1.472,-0.077 1.941,-0.077 2.231,0.224 L6.783,4.967 C6.928,5.118 7.000,5.316 7.000,5.514 C7.000,5.711 6.927,5.909 6.783,6.060 Z" />
+                                    </svg>
+                                </i>
+                            </Link>
+                        </div>
+                        <div id="collapseSettings" className={`SubmenuItems collapse ${payment ? "mm-show" : "extra"}`} aria-labelledby="headingSettings" data-parent="#accordion">
+                            <ul>
+                                <li>
+                                    <Link to="add-payment-request">Add Payment Request</Link>
+                                </li>
+                                <li>
+                                    <Link to="payment-request-view">Payment Request View</Link>
                                 </li>
                             </ul>
                         </div>
@@ -348,18 +388,18 @@ function AsideAdmin({ isActive }) {
           </div> */}
                     <div className="MenuItem">
                         <div className="card-header">
-                            <a href="#" >
+                            <a href="#" onClick={logOut}>
                                 <i>
                                     <svg x={0} y={0} viewBox="0 0 20 22">
                                         <path d="M10.000,22.000 C4.477,22.000 -0.000,17.486 -0.000,11.916 C-0.000,7.871 2.385,4.266 5.998,2.673 C6.458,2.470 6.994,2.681 7.196,3.145 C7.397,3.609 7.187,4.150 6.727,4.352 C3.770,5.656 1.818,8.606 1.818,11.916 C1.818,16.473 5.481,20.167 10.000,20.167 C14.518,20.167 18.182,16.473 18.182,11.916 C18.182,8.605 16.229,5.655 13.271,4.352 C12.811,4.150 12.601,3.609 12.802,3.146 C13.003,2.682 13.539,2.470 13.999,2.672 C17.614,4.265 20.000,7.870 20.000,11.916 C20.000,17.485 15.522,22.000 10.000,22.000 ZM10.000,10.083 C9.498,10.083 9.090,9.673 9.090,9.167 L9.090,0.917 C9.090,0.410 9.498,-0.000 10.000,-0.000 C10.502,-0.000 10.909,0.410 10.909,0.917 L10.909,9.167 C10.909,9.673 10.502,10.083 10.000,10.083 Z" />
                                     </svg>
                                 </i>
-                                <span>Logout</span>
+                                <span >Logout</span>
                             </a>
                         </div>
                     </div>
                 </div></div><div id="mCSB_1_scrollbar_vertical" className="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style={{ display: 'block' }}><div className="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" className="mCSB_dragger" style={{ position: 'absolute', minHeight: 50, height: 154, top: 0, display: 'block', maxHeight: '291.6px' }}><div className="mCSB_dragger_bar" style={{ lineHeight: 50 }} /></div><div className="mCSB_draggerRail" /></div></div></aside>
-
+            <div class="overlay" id="myDIV" onClick={overlayClick}></div>
         </>
     )
 }

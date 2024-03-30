@@ -5,7 +5,7 @@ import { userLogin } from "../../../api/login/Login";
 import { SaveUserDeatilsLocalStorage } from "../../../utils/localStorage";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-function MerchantLoginForm() {
+function MerchantLoginForm({ handleSubmitChange }) {
     const [initialValue, setInitialValue] = useState({
         entity: '',
         password: ''
@@ -51,14 +51,14 @@ function MerchantLoginForm() {
     const navigate = useNavigate()
 
     const handleSubmit = async () => {
-        console.log(initialValue);
+        // console.log(initialValue);
         // event.preventDefault()
         // setErrorValue(validation(initialValue))
         try {
             const res = await userLogin(initialValue)
             SaveUserDeatilsLocalStorage(res?.data?.user)
-            console.log(res);
-            if(res.statusCode == 200){
+            // console.log(res);
+            if (res.statusCode == 200) {
                 toastSuccessMessage('Login Successfully')
                 setTimeout(() => {
                     navigate('/registrationComplete')
@@ -72,7 +72,7 @@ function MerchantLoginForm() {
 
     return (
         <>
-          <ToastContainer />
+            <ToastContainer />
             <div className="mobile-login-phone">
                 <form action="" >
                     <div className="input-group mb-3">
@@ -88,7 +88,7 @@ function MerchantLoginForm() {
                     </div>
                 </form>
                 <div className="text-align-center mt-1">
-                    <a href="#" >Forgot Password ?</a>
+                    <a href="#" onClick={handleSubmitChange}>Forgot Password ?</a>
                 </div>
 
             </div>

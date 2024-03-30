@@ -1,9 +1,44 @@
 
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { getShippingAddress, getShippingAddressDelete } from "../../../api/login/Login";
+import { useEffect, useState } from "react";
+import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+const toastSuccessMessage = (str) => {
+    toast.success(`${str}`, {
+        position: "top-center"
+    })
+};
 function Shipping_Address() {
+    const [data, setData] = useState(null);
+    const getData = async () => {
+        try {
+            const res = await getShippingAddress()
+            setData(res.data);
+        } catch (error) {
+            alert("Server Error Failed To load Data");
+        }
+    };
 
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const navigate = useNavigate()
+    const setIdAddresdEdit = (id) => {
+        navigate(`/admin/shipping_AddressaForm/${id}`)
+    }
+
+    const deleteAddress = async (id) => {
+        try {
+            await getShippingAddressDelete(id)
+            toastSuccessMessage('Address Delete Successfully')
+            getData()
+        } catch (error) {
+            alert('Address Not Delete')
+        }
+    }
 
     return (
         <div className="addressInfo mt-3">
@@ -14,13 +49,13 @@ function Shipping_Address() {
           </div>
         </div>
       )} */}
-
+            <ToastContainer />
             <div className="card container" style={{ margin: "10px auto" }}>
                 <div className="card-header">
                     <h5 className="mb-0 h6">Shipping Address</h5>
                 </div>
                 <div className="card-body">
-                    <div className="col-lg-6 mx-auto">
+                    <div className="col-lg-3 mx-auto">
                         <div className="border p-3 rounded mb-3 c-pointer text-center bg-light">
                             <i className="la la-plus la-2x" />
                             <div
@@ -38,8 +73,8 @@ function Shipping_Address() {
                             <span className="visually-hidden">Loading...</span>
                         </div>
                     </div>} */}
-                        {[] &&
-                            [{ _id: '1' }].map((item) => {
+                        {data &&
+                            data?.data.map((item) => {
                                 return (
                                     <div className="col-lg-6" key={item._id}>
                                         <div className="border p-3 pr-5 rounded mb-3 position-relative">
@@ -55,17 +90,10 @@ function Shipping_Address() {
                                                 <div className="form-check form-switch d-flex">
                                                     <FaEdit
                                                         onClick={() => {
-                                                            // setIdAddresdEdit(item._id);
+                                                            setIdAddresdEdit(item._id);
                                                         }}
                                                     />
-                                                    <input
-                                                        className="form-check-input"
-                                                        type="checkbox"
-                                                        // checked={item.active}
-                                                        role="switch"
-                                                        id="flexSwitchCheckChecked"
-                                                    // onClick={() => billingShippingActive(item)}
-                                                    />
+                                                    <MdDelete  style={{marginLeft:"10px"}} onClick={() => { deleteAddress(item._id) }} />
                                                 </div>
                                             </h6>
                                             <div>
@@ -100,7 +128,7 @@ function Shipping_Address() {
                                             <div>
                                                 <span className="w-50 fw-600">Name:</span>
                                                 <span className="ml-2">
-                                                    {item?.firstname + " " + item?.lastname}
+                                                    {item?.firstname}{item?.lastname ? item?.lastname : ''}
                                                 </span>
                                             </div>
                                             <div>

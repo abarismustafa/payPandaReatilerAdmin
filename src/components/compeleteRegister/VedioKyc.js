@@ -2,8 +2,10 @@ import { useState } from "react";
 import { FcVideoCall } from "react-icons/fc";
 import { declarationSub, videoKycUpload } from "../../api/login/Login";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const VedioKyc = ({ setState }) => {
+    const navigate = useNavigate()
     const [disa, setDisa] = useState(true)
     const [initialValue, setInitialValue] = useState({
         video: '',
@@ -30,6 +32,9 @@ export const VedioKyc = ({ setState }) => {
             const res = await videoKycUpload(initialValue)
             if (res?.data?.statusCode == "200") {
                 toastSuccessMessage(res?.data?.data?.message)
+                setTimeout(() => {
+                    navigate('/admin')
+                }, 1000)
             }
 
         } catch (error) {

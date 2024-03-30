@@ -4,7 +4,7 @@ import DasBoardRightSection from "../../../components/admin/dasboardRightSection
 import AdminHeader from "../../../common/adminHeader/AdminHeader"
 import AdminRightHeader from "../../../common/adminHeader/adminRightHeader/AdminRightHeader"
 import ServiceParent from "../../../components/admin/dasBoard/serviceParent/ServiceParent"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import RightSideBarSettings from "../../../components/admin/rightSidebarSetting/RightSidebarSetting"
 
 function DasRightSectionPage() {
@@ -16,23 +16,40 @@ function DasRightSectionPage() {
     const [isActive, setIsActive] = useState(false);
 
     const handleClick = () => {
-
-        // console.log('jkhjkhk');
-        // 👇️ toggle isActive state on click
+        // console.log('dff');
         setIsActive(current => !current);
+        var element = document.getElementById("myDIV");
+        element.classList.add("overlay");
     };
 
+    const overlayClick = () => {
+        setIsActive(current => !current);
+
+        var element = document.getElementById("myDIV");
+        element.classList.remove("overlay");
+    }
+
+    const ref = useRef(null);
+    useEffect(() => {
+        // console.log('width', ref.current ? ref.current.offsetWidth : 0);
+        if (ref.current.offsetWidth <= 426) {
+            setIsActive(current => !current);
+        }
+        var element = document.getElementById("myDIV");
+        element.classList.remove("overlay");
+    }, [ref?.current]);
 
     return (
         <>
             {/* <DasBoardRightSection /> */}
-            <div className="LayoutMain" id="abcd">
+            <div className="LayoutMain" ref={ref} id="abcd dadas" >
                 <AdminHeader handleClick={handleClick} />
                 <div className="BodyArea" id="abcd">
-                    <AsideAdmin isActive={isActive} />
+                    <AsideAdmin isActive={isActive} overlayClick={overlayClick} />
                     <div className="ContainerMain">
                         {/* <AdminRightHeader /> */}
                         <Outlet></Outlet>
+
                     </div>
                 </div>
             </div>

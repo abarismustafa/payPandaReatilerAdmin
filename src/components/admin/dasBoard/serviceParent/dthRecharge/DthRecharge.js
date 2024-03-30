@@ -10,7 +10,10 @@ function DthRecharge() {
                         <form id="frmDthrecahrge" name="frmrecahrge" method="post" action="https://m.masterpay.pro/Retailer/recharge_home" className="CustomForm fl-form ng-pristine ng-valid" autoComplete="off">
                             <input type="hidden" id="hidSubmitRecharge" name="hidSubmitRecharge" defaultValue="Success" autoComplete="off" />
                             <div className="form-group">
-                                <div className="fl-wrap fl-wrap-input"><label htmlFor="txtDthNo" className="fl-label">Customer ID</label><input type="text" className="form-control fl-input" id="txtDthNo" maxLength={40} name="txtMobileNo" placeholder="Customer ID" tabIndex={1} onkeyup="getCustName()" data-placeholder="Enter Customer ID" /></div>
+                                <div className="fl-wrap fl-wrap-input">
+                                    <label htmlFor="txtDthNo" className="fl-label">Customer ID</label>
+                                    <input type="text" className="form-control fl-input" id="txtDthNo" maxLength={40} name="txtMobileNo" placeholder="Customer ID" tabIndex={1} onkeyup="getCustName()" data-placeholder="Enter Customer ID" />
+                                </div>
                             </div>
                             <div className="form-group">
                                 <div className="fl-wrap fl-wrap-select"><label htmlFor="ddlDthOperator" className="fl-label">Company</label><select className="form-control fl-select" name="ddlOperator" placeholder="Select company name." tabIndex={2} id="ddlDthOperator" data-placeholder="Select company name.">

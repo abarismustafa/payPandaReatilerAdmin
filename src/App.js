@@ -82,6 +82,9 @@ import Shipping_Address from './pages/admin/shipping_Address';
 import FormBillAdd from './pages/admin/shipping_Address/FormBillAdd';
 import BillingAddress from './pages/admin/billingAddress';
 import ProfilePage from './pages/admin/profilePage';
+import WalletReportPage from './pages/admin/walletReport';
+import PaymentRequestViewPage from './pages/admin/payment/paymentRequestView/PaymentRequestView';
+import AddPaymentRequestPage from './pages/admin/payment/addPaymentRequest';
 function App() {
   const [isLogin, setislogin] = useState(window.localStorage.getItem('login'))
 
@@ -132,6 +135,7 @@ function App() {
           <Route path='recharge_history' element={<RechargeHistoryPage />} />
           <Route path='search_recharge_history' element={<SearchRechargeHistoryPage />} />
           <Route path='money_transfer_Reprot' element={<MoneyTransferReprotPage />} />
+          <Route path='wallet-report' element={<WalletReportPage />} />
           <Route path='fastag_report' element={<FastTagPage />} />
           <Route path='dmt_report' element={<DmtReportPage />} />
           <Route path='dmt_report_search' element={<DtmReportSearchPage />} />
@@ -154,13 +158,17 @@ function App() {
           <Route path='Turbo_payment_request' element={<TurboPaymentRequestPage />} />
           <Route path='Pg_report_rz' element={<PaymentGateWayPage />} />
           <Route path='Aquapay_gift_cards_report' element={<RupayCardReportPage />} />
+          <Route path='payment-request-view' element={<PaymentRequestViewPage />} />
+          <Route path='add-payment-request' element={<AddPaymentRequestPage />} />
 
           {/* <Route path="" element={<ServiceParent />} ></Route> */}
           <Route path='change_password' element={<PasswordChagePage />} />
           <Route path='shipping_Address' element={<Shipping_Address />} />
           <Route path='billing_Address' element={<BillingAddress />} />
-          <Route path='shipping_AddressaForm' element={<FormBillAdd ship={'Shipping'} type='shipping' />} />
-          <Route path='billing_AddressaForm' element={<FormBillAdd ship={'billing'} type='billing' />} />
+          <Route path='shipping_AddressaForm' element={<FormBillAdd ship={'Shipping'} type='Shipping' />} />
+          <Route path='/admin/shipping_AddressaForm/:id' element={<FormBillAdd ship={'Shipping'} type='Shipping' />} />
+          <Route path='billing_AddressaForm' element={<FormBillAdd ship={'billing'} type='Billing' />} />
+          <Route path='/admin/billing_AddressaForm/:id' element={<FormBillAdd ship={'billing'} type='Billing' />} />
           <Route path='change_txnpassword' element={<CreatePinPage />} />
           <Route path='Retailer_authentication' element={<OtpSecurityPage />} />
           <Route path='tds_certificate' element={<TdsCertificatePage />} />

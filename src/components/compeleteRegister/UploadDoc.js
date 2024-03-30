@@ -130,7 +130,7 @@ export const UploadDoc = ({ setState }) => {
   };
 
   const onChangeHandleImage = async (e, nam) => {
-    console.log(e, nam);
+    // console.log(e, nam);
     const image = new FormData();
     image.append('image', e.file.originFileObj);
     try {
@@ -150,7 +150,7 @@ export const UploadDoc = ({ setState }) => {
       if (res?.data?.statusCode == '200') {
         toastSuccessMessage('Document Upload Successfull')
         setTimeout(() => {
-          setState(3)
+          setState(5)
         }, 1000);
       }
     } catch (error) {
@@ -218,8 +218,10 @@ export const UploadDoc = ({ setState }) => {
         display: 'flex',
         justifyContent: 'space-between'
       }}>
-        {/* <button type="submit" onClick={() => { setState(3) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button> */}
+        <button type="submit" onClick={() => { setState(3) }} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Back</button>
         <button type="button" onClick={submitData} style={{ backgroundColor: '#2E3191' }} className="btn btn-primary">Submit</button>
+
+
       </div>
     </form >
     <ToastContainer />

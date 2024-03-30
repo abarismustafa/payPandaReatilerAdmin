@@ -80,7 +80,6 @@ function CompeleteRegister() {
                             <TopSection />
                             <Steps current={state} labelPlacement="vertical" items={items} />
                             <div className="firstFor">
-
                                 {state == 0 && <FirstForm datas={datas} setState={setState} />}
                                 {state == 1 && <SecForm setState={setState} />}
                                 {state == 2 && <GstBusinessForm setState={setState} />}

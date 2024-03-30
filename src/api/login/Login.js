@@ -41,12 +41,19 @@ export const GstBusiness = (value) => {
   return axios.post(`${baseUrl}/verification/gstno`, value);
 };
 
+export const GstBusinessAfterVerifide = (value) => {
+  return axios.post(`${baseUrl}verification/gstNoSave`, value);
+};
+
 export const userLogin = (value) => {
   return axiosInstance.post(`${baseUrl}auth/mb/login`, value);
 };
 
 export const bankAccount = (value) => {
   return axios.post(`${baseUrl}verification/bankAccount`, value);
+};
+export const bankAccountSave = (value) => {
+  return axios.post(`${baseUrl}verification/bankAccountSave`, value);
 };
 export const videoKycUpload = (value) => {
   return axios.post(`${baseUrl}verification/kycUpload`, value);
@@ -63,11 +70,11 @@ export const uploadDocument = (value) => {
   return axios.post(`${baseUrl}userdocument/add_doc`, value);
 };
 export const CountryList = (value) => {
-  return axiosInstance.get(`${baseUrl}country/mb/public`);
+  return axiosInstance.get(`${baseUrl}country/public/list`);
 };
 
 export const getCountry = (value) => {
-  return axios.get(`${baseUrl}country/mb/public`);
+  return axios.get(`${baseUrl}country/public/list`);
 };
 
 export const getState = (value) => {
@@ -78,7 +85,7 @@ export const declarationSub = (value) => {
   return axios.post(`${baseUrl}verification/docSave`, value);
 };
 export const sendShipping = (value) => {
-  return axios.post(`${baseUrl}user/register/billAddress`, value);
+  return axios.post(`${baseUrl}deliveryaddress/user/addDeliveryaddress`, value);
 };
 // profileUpdate
 
@@ -100,6 +107,149 @@ export const Getprofile = () => {
 
 // profileUpdate
 
+
+
+export const sendShippingUpdate = ({ value, id }) => {
+  return axios.put(`${baseUrl}deliveryaddress/user/updatedeliveryaddress/${id}`, value);
+};
+
+export const getShippingAddress = (value) => {
+  return axios.get(`${baseUrl}deliveryaddress/user/shipping`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+export const getShippingAddressById = (id) => {
+  return axios.get(`${baseUrl}deliveryaddress/user/detail/${id}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+export const getShippingAddressDelete = (id) => {
+  return axios.delete(`${baseUrl}deliveryaddress/user/deletedeliveryaddress/${id}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+
+export const getBillingAddress = (value) => {
+  return axios.get(`${baseUrl}deliveryaddress/user/billing`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+
+export const resetApi = (value) => {
+  return axios.put(`${baseUrl}auth/mb/resetPassword`, value);
+};
+
+
+// dmt
+
+export const CustomerInfo = (value) => {
+  return axios.get(`${baseUrl}eko/customerProfile?mobileNo=${value.mobile}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+export const createCustomer = (value) => {
+  return axios.post(`${baseUrl}eko/createCustomer`, value);
+};
+export const ekoVeryfyCustomer = (value) => {
+  return axios.post(`${baseUrl}eko/verifyCustomer`, value);
+};
+export const resendOtpsCustomer = (value) => {
+  return axios.post(`${baseUrl}eko/resendCustomerOtp`, value);
+};
+export const reciptList = (value) => {
+  return axios.get(`${baseUrl}eko/recipientList?mobileNo=${value.mobile}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+export const bankListApi = () => {
+  return axios.get(`${baseUrl}dmt_bank/public/list`);
+};
+
+export const BENEFICIARYAdd = (value) => {
+  return axios.post(`${baseUrl}eko/recipientAdd`, value, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+export const BENEFICIARYDelete = (value) => {
+  return axios.post(`${baseUrl}eko/recipientDelete`, value);
+};
+
+export const sendMoneyTrans = (value) => {
+  return axios.post(`${baseUrl}dmt_txn/trans`, value);
+};
+
+export const dmtTransiList = (value) => {
+  return axios.post(`${baseUrl}dmt_txn/report`, value);
+};
+
+export const walletsREports = (value) => {
+  return axios.post(`${baseUrl}mainwallet/public/filter`, value);
+};
+
+
+// dmt
+
+export const WalletsShow = () => {
+  return axios.get(`${baseUrl}auth/userValidate`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+export const service_user_permission = () => {
+  return axios.get(`${baseUrl}service_user_permission/isAvail/2`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+};
+
+
+export const addPaymentRequest = (value) => {
+  return axios.post(`${baseUrl}paymentRequest/addRequest`, value);
+};
+
+export const paymentRequest = (value) => {
+  return axios.post(`${baseUrl}paymentRequest/user`, value);
+};
+
+export const paymentEnquiry = (id) => {
+  return axios.get(`${baseUrl}dmt_txn/trans/${id}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
+    },
+  });
+}
 
 
 // export const currencyAdd = (data) => {

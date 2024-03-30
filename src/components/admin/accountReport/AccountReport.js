@@ -1,5 +1,5 @@
 
-
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function AccountReport() {
     return (
         <>
@@ -33,10 +33,10 @@ function AccountReport() {
                                     <label>&nbsp;</label>
                                     <button className="btn btn-primary">Submit</button>
                                 </div>
-                                <div className="form-group col-md-2">
+                                {/* <div className="form-group col-md-2">
                                     <label>&nbsp;</label>
                                     <input type="button" id="btnExport" name="btnExport" defaultValue="Export" className="btn btn-secondary" onclick="startexoprt()" fdprocessedid="fv9sw" />
-                                </div>
+                                </div> */}
                             </div>
                         </form></div>
                     <form id="frmexport" name="frmexport" action="" method="get">
@@ -48,7 +48,16 @@ function AccountReport() {
                 <div className="card mt-2" style={{ overflow: 'auto' }}>
                     <div className="card-body">
                         <div className="GridUi no-header-footer-grid" id="all_transaction">
-                            <table id="rechargehistorytbl" className="table table-striped table-bordered table-hover display fixed_headers" style={{ width: 1250 }}>
+                            <div>
+                                <ReactHTMLTableToExcel
+                                    id="test-table-xls-button"
+                                    className="download-table-xls-button btn btn-success cusxel mb-2"
+                                    table="table-to-xlsx"
+                                    filename="tablexls"
+                                    sheet="tablexls"
+                                    buttonText="Download Excel sheet" />
+                            </div>
+                            <table id="table-to-xlsx" className="table table-striped table-bordered table-hover display fixed_headers" style={{ width: 1250 }}>
                                 <thead>
                                     <tr>
                                         <th>Payment Date</th>
@@ -63,6 +72,37 @@ function AccountReport() {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr className="odd">
+
+                                        <td valign="top" className="dataTables_empty">
+                                            2-2-2024
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            1
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            2
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            abc
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            9834
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            3000
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            200
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            yes
+                                        </td>
+                                        <td valign="top" className="dataTables_empty">
+                                            Cde
+                                        </td>
+
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

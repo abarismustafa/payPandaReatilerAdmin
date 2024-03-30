@@ -15,7 +15,7 @@ function SignUpMerchant() {
     const [formResiter, setFormResiter] = useState(false)
 
     const [countryCode, setCountryCode] = useState()
-    console.log(countryCode);
+    // console.log(countryCode);
 
     const [userID, setUserID] = useState()
 

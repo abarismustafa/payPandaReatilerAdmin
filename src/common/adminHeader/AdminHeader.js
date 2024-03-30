@@ -2,14 +2,17 @@
 import { useEffect, useState } from 'react'
 import logo from '../../asesets/logo/PayPanda_logo_Final-09-e1670775011263.png'
 import { SiPaytm } from "react-icons/si";
-import { Link } from 'react-router-dom';
-import { Getprofile } from '../../api/login/Login';
+import { Await, Link, useNavigate } from 'react-router-dom';
+import { Getprofile, WalletsShow } from '../../api/login/Login';
 
 
 function AdminHeader({ handleClick }) {
+    const navigate = useNavigate()
+
     const [loadwallet, setLoadWallet] = useState(false)
     const [toggle, setToggle] = useState(false);
     const [data, setData] = useState(null)
+    const [walletData, setWalletData] = useState()
     const profileOn = () => {
         setToggle(!toggle);
     };
@@ -22,9 +25,31 @@ function AdminHeader({ handleClick }) {
 
         }
     }
+
+    const walletShowHeader = async () => {
+        try {
+            const res = await WalletsShow()
+            setWalletData(res?.data?.data);
+        } catch (error) {
+
+        }
+    }
+
+
+
+
     useEffect(() => {
         getDataProfile()
+        walletShowHeader()
     }, [])
+
+
+    const logOut = () => {
+        window.localStorage.removeItem('userToken')
+        window.localStorage.removeItem('userIdToken')
+        // window.location.reload()
+        navigate('/login-area')
+    }
 
 
     return (
@@ -112,6 +137,19 @@ function AdminHeader({ handleClick }) {
                         </div> */}
 
                         {/* User Wallet Start */}
+
+                        <div className="UserWallet mr-2" >
+                            <i>
+                                <svg x={0} y={0} viewBox="0 0 28 28">
+                                    <path d="M27.982,13.044 L26.627,13.044 L26.627,6.867 C26.627,5.386 25.411,4.182 23.916,4.182 L22.081,4.182 L20.202,0.836 C19.916,0.324 19.371,0.007 18.780,0.007 C18.505,0.007 18.232,0.077 17.990,0.210 L10.781,4.182 L2.728,4.182 C1.233,4.182 0.017,5.386 0.017,6.867 L0.017,25.307 C0.017,26.788 1.233,27.993 2.728,27.993 L23.916,27.993 C25.411,27.993 26.627,26.788 26.627,25.307 L26.627,19.892 L27.982,19.892 L27.982,13.044 L27.982,13.044 ZM23.916,5.256 C24.751,5.256 25.433,5.884 25.525,6.688 L23.488,6.688 L22.684,5.256 L23.916,5.256 ZM18.518,1.149 C18.772,1.007 19.114,1.106 19.254,1.357 L22.247,6.688 L8.463,6.688 L18.518,1.149 ZM25.543,25.307 C25.543,26.196 24.813,26.919 23.916,26.919 L2.728,26.919 C1.831,26.919 1.101,26.196 1.101,25.307 L1.101,6.867 C1.101,5.979 1.831,5.256 2.728,5.256 L8.831,5.256 L6.231,6.688 L3.067,6.688 C2.767,6.688 2.525,6.929 2.525,7.225 C2.525,7.522 2.767,7.763 3.067,7.763 L4.281,7.763 L24.091,7.763 L25.543,7.763 L25.543,13.044 L21.578,13.044 C19.737,13.044 18.239,14.529 18.239,16.353 L18.239,16.584 C18.239,18.408 19.737,19.892 21.578,19.892 L25.543,19.892 L25.543,25.307 L25.543,25.307 ZM26.898,18.818 L26.627,18.818 L21.578,18.818 C20.335,18.818 19.323,17.816 19.323,16.583 L19.323,16.352 C19.323,15.120 20.334,14.118 21.578,14.118 L26.627,14.118 L26.898,14.118 L26.898,18.818 ZM23.239,16.512 C23.239,17.167 22.703,17.698 22.042,17.698 C21.380,17.698 20.845,17.167 20.845,16.512 C20.845,15.857 21.380,15.326 22.042,15.326 C22.703,15.326 23.239,15.857 23.239,16.512 Z" />
+                                </svg>
+                            </i>
+                            <div className="WalletDetails">
+                                <h3>Main Wallet</h3>
+                                <h2>₹ <span id="baldiv">{walletData?.main_wallet}</span></h2>
+                            </div>
+                        </div>
+
                         <div className="UserWallet" >
                             <i>
                                 <svg x={0} y={0} viewBox="0 0 28 28">
@@ -119,10 +157,12 @@ function AdminHeader({ handleClick }) {
                                 </svg>
                             </i>
                             <div className="WalletDetails">
-                                <h3>Available Balance</h3>
-                                <h2>₹ <span id="baldiv">2162.81</span></h2>
+                                <h3>AEPS Wallet</h3>
+                                <h2>₹ <span id="baldiv">{walletData?.aeps_wallet}</span></h2>
                             </div>
                         </div>
+
+
                         {/* User Wallet End */}
                         {/* <a href="https://m.masterpay.pro/Retailer/Paytm_transfer" class="walletTopup">
                       <div class="UserWallet">
@@ -273,7 +313,7 @@ function AdminHeader({ handleClick }) {
                                             <a
                                                 href="#"
                                                 className="dropdown-item ai-icon"
-                                            // onClick={handleLogOut}
+                                                onClick={logOut}
                                             >
                                                 <svg
                                                     className="profle-logout"

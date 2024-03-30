@@ -7,7 +7,7 @@ function Profile() {
     const [language, setLanguage] = useState()
     const [profileImage, setProfileImage] = useState()
     const [data, setData] = useState()
-    console.log(data);
+    // console.log(data);
 
     const [initialValues, setInitialValues] = useState({
         name: "",
@@ -67,7 +67,7 @@ function Profile() {
             if (res?.status == '200') {
                 toastSuccessMessage(res.data.data.message)
             }
-            console.log(res);
+            // console.log(res);
         } catch (error) {
 
         }
